@@ -13,7 +13,7 @@ angular.module('MeetlyApp.services', [])
 
 .factory('httpRequestsFactory', function($http) {
   // Handle GET and POST requests
-  var postRequest = function(params, _category, _location) {
+  var postRequest = function(params) {
     console.log('====> ', params);
     return $http({
       method: 'POST',
@@ -24,8 +24,16 @@ angular.module('MeetlyApp.services', [])
       return response.data;
     });
   };
+
+  var googleMaps = function(userLoc, busLoc) {
+    console.log('GOOGLE MAPS');
+    // console.log('userLoc: ', userLoc);
+    console.log('busLoc: ', busLoc);
+  };
+
   return {
-    postRequest: postRequest
+    postRequest: postRequest,
+    googleMaps: googleMaps
   }
 });
 

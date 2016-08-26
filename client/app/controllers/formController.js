@@ -10,14 +10,29 @@ angular.module('MeetlyApp.form', [])
   }
 
   // Send form data to server API router
+  $scope.data = {}; 
   var initMeetSearch = function () {
     httpRequestsFactory.postRequest($scope.postRequest)
       .then(function (searchResults) {
-        $scope.data.postRequest = postRequest;
+        // console.log('========>', searchResults);
+        $scope.data.results = searchResults;
+        console.log('loc: ', $scope.data.results.businesses[0].location.coordinate);
+        initGoogleMaps();
       })
       .catch(function (error) {
         console.error(error);
       });
+  };
+
+  // Google API
+  var initGoogleMaps = function() {
+    httpRequestsFactory.googleMaps($scope.data.results.businesses[0].location.coordinate, 'userLoc');
+      // .then(function(data) {
+      //   console.log('data: ', data);
+      // })
+      // .catch(function(error) {
+      //   console.error(error);
+      // })
   };
 
 });
