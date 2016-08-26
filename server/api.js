@@ -10,16 +10,21 @@ var yelp = new Yelp({
 });
 
 router.post("/yelpAPI", function(req, res) {    
+  console.log('request body');
+  console.log(req.body)
   yelp.search({ 
-      term: req.body.category, 
+      term: req.body.category, // this will eventually be subcategories (e.g. Thai, Greek)
+      // category_filter: req.body.category, //this will correspond to cateogry (e.g. Restaurant)
       location: req.body.location,
       limit: 10,
       sort: 2,
-      radius_filter: 400
+      radius_filter: 600
      })
   .then(function (data) {
     // console.log(data);
     // console.log(data.rating);
+    console.log('data from Yelp');
+    console.log(data);
     res.send(data);
   })
   .catch(function (err) {
