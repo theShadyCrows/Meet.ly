@@ -2,8 +2,8 @@
 angular.module('MeetlyApp.services', [])
 .factory('validateFormFactory', function() {
     // Form validation
-    var toValidate = function(arg1, arg2) {
-      return {'category': arg1, 'location': arg2};
+    var toValidate = function(arg1, arg2, arg3) {
+      return {'category': arg1, 'type': arg2, 'location': arg3};
     };
   
   return {
@@ -25,10 +25,17 @@ angular.module('MeetlyApp.services', [])
     });
   };
 
-  var googleMaps = function(userLoc, busLoc) {
+  var googleMaps = function(busLoc, userLoc) {
     console.log('GOOGLE MAPS');
-    // console.log('userLoc: ', userLoc);
     console.log('busLoc: ', busLoc);
+    // return $http({
+    //   method: 'POST',
+    //   url: '/api/GoogleMapsAPI',
+    //   data: params
+    // })
+    // .then(function (response) {
+    //   return response.data;
+    // });
   };
 
   return {

@@ -1,35 +1,78 @@
 <!DOCTYPE html>
 <html ng-app="MeetlyApp">
 <head>
-  <title>Meet.ly</title>
+  <title>Meet.me</title>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
- <h1>Meet.ly</h1>
 
-  <!-- START: formController -->
-  <div ng-controller="formController">
+  <header class="top-area">
+    <h1>Meet.me</h1>
 
-    <!-- START: select category -->
-    <select ng-model="selected">
-      <option value="">---Select Category---</option>
-      <option value="Outdoors">Outdoors</option>
-      <option value="Movies">Movies</option>
-      <option value="Restaurants">Restaurants</option>
-    </select>
-    <!-- END: select category -->
+    <div class="menu-selection" ng-controller="formController">
+      <!-- START: select category -->
+      <div class="custom-drop-down-list">
+        <div class="drop-down-arrow-area arrow-down"></div>
+        <div class="select-box">-- Select Category --</div>
+        <ul class="options-list">
+          <li>-- Select Category --</li>
+          <li>Arts &amp; Entertainment</li>
+          <li>Automotive</li>
+          <li>Beauty &amp; Spas</li>
+          <li>Education</li>
+          <li>Event Planning &amp; Services</li>
+          <li>Financial Services</li>
+          <li>Food</li>
+          <li>Health &amp; Medical</li>
+          <li>Home Services</li>
+          <li>Local Services</li>
+          <li>Mass Media</li>
+          <li>Nightlife</li>
+          <li>Pets</li>
+          <li>Professional Services</li>
+          <li>Public Services &amp; Government</li>
+          <li>Real Estate</li>
+        </ul>
+      </div>
+      <!-- <select ng-model="selectedCat">
+        <option value="">-- Select Category --</option>
+        <option value="Outdoors">Outdoors</option>
+        <option value="Movies">Movies</option>
+        <option value="Restaurants">Restaurants</option>
+      </select> -->
+      <!-- END: select category -->
 
-    <!-- START: location -->
-    <input type="text" name="location" ng-model="location" />
-    <!-- END: location -->
+      <!-- START: select category -->
+      <select ng-model="selectedType">
+        <option value="">-- Select Type --</option>
+        <option value="Outdoors">Type 1</option>
+        <option value="Movies">Type 2</option>
+        <option value="Restaurants">Type 3</option>
+      </select>
+      <!-- END: select category -->
 
-    <!-- START submit form button -->
-    <button ng-click="submitForm(selected, location)">Submit</button>
-    <!-- START submit form button -->
-  </div>
-  <!-- END: formController -->
+      <!-- START: location -->
+      <input type="text" name="location" ng-model="location" />
+      <!-- END: location -->
+
+      <!-- START submit form button -->
+      <button ng-click="submitForm(selectedCat, selectedType, location)">Submit</button>
+      <!-- START submit form button -->
+    </div>
+
+  </header>
+
+  <!-- GOOGLE MAPS RESULTS GO HERE -->
+  <section>
+    
+  </section>
+
+ 
+
+
 
   <!-- Scripts -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+  <script src="js/main.js"></script>
   <script src="app/services/services.js"></script>
   <script src="app/controllers/formController.js"></script>
   <script src="app/app.js"></script>
