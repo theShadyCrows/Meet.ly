@@ -3,8 +3,8 @@ angular.module('MeetlyApp.form', [])
 .controller('formController', function($scope, validateFormFactory, httpRequestsFactory) {
   
   // Validate form before sending GET request
-  $scope.submitForm = function(selected, location) {
-    $scope.postRequest = validateFormFactory.toValidate($scope.selected, $scope.location);
+  $scope.submitForm = function(selectedCat, selectedType, location) {
+    $scope.postRequest = validateFormFactory.toValidate(selectedCat, selectedType, location);
     // console.log($scope.postRequest);
     initMeetSearch();
   }

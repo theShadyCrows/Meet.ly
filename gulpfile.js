@@ -2,7 +2,7 @@ var gulp = require('gulp');
 
 // Gulp watch
 gulp.task('watch', function() {
-  gulp.watch('client/**', []);
+  gulp.watch('client/app/*.js', []);
 });
 
 //Run a local server
