@@ -4,6 +4,7 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var Yelp = require('yelp');
+var db = require('./server/db/config.js');
 
 // configuration ===========================================
 //Separate router for /api requests 
