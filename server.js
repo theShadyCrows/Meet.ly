@@ -5,6 +5,9 @@ var bodyParser = require("body-parser");
 var cors = require("cors");
 var Yelp = require('yelp');
 var db = require('./server/db/config.js');
+var utilAuth = require('./server/lib/utilAuth')
+
+var User = require('./server/models/user');
 
 // configuration ===========================================
 //Separate router for /api requests 
@@ -28,6 +31,11 @@ app.use(bodyParser.json());
 app.use("/", express.static(__dirname + "/client/"));
 
 // routes ==================================================
+/* Authentication Routes */
+app.post("/login", utilAuth.checkPassword);
+app.post("/logout", utilAuth.destroySession);
+app.post("/signup", utilAuth.createUser);
+/* API Routes */
 app.use("/api", apiRouter);
 
 // start app ===============================================
