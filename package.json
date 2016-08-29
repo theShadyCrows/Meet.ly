@@ -26,9 +26,5 @@
     "method-override": "~2.0.2",
     "request": "^2.74.0",
     "yelp": "^1.0.1"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.14.0",
-    "gulp": "^3.9.1"
   }
 }
