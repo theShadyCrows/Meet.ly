@@ -32,4 +32,7 @@ testDivs.map(function(node) {
     });
   };
 
+
+  optionsList.style.width = (selectBox.offsetWidth - 2) + 'px';
+
 });
