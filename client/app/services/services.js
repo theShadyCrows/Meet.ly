@@ -26,8 +26,23 @@ angular.module('MeetlyApp.services', [])
   };
 
   var googleMaps = function(busLoc, userLoc) {
+
+    /*
+     * GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
+     */
+
     console.log('GOOGLE MAPS');
-    console.log('busLoc: ', busLoc);
+    // console.log('busLoc: ', busLoc);
+
+    var busLocObj = {};
+    busLocObj.lat = busLoc.latitude;
+    busLocObj.lng = busLoc.longitude;
+
+
+    initMap(busLocObj);
+
+
+
     // return $http({
     //   method: 'POST',
     //   url: '/api/GoogleMapsAPI',
