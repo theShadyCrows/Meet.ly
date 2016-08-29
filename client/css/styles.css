@@ -1,14 +1,17 @@
+html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   font-size: 18px;
 }
 
+
+
+/* HEADER ============================================== */
 .top-area {
-  /*border: 1px solid gray;*/
   background: #e6e6e6;
-  
 }
 
 .top-area h1 {
@@ -16,11 +19,21 @@ body {
   margin: 15px 20px;
 }
 
-.top-area .menu-selection {
+
+
+/* FORM AREA  ========================================== */
+.form-area {
+  margin: 0 auto;
+  width: 75%;
+  border: 1px solid blue;
+}
+
+.form-area .menu-selection {
   display: inline-block;
-  /*line-height: 74px;        CONFILCT WITH CUSTOM DROP DOWN MENU */
   vertical-align: top;
 }
+
+
 
 /* 
  *  BEGIN: CUSTOM DROP-DOWN MENU STYES
@@ -55,6 +68,7 @@ ul.options-list {
   border-bottom-left-radius: 6px;
   background: #fff;
   position: fixed;
+  z-index: 100;
 }
 
 ul.options-list li {
@@ -111,3 +125,22 @@ ul.options-list li:hover {
   font-size: .75em;
   padding: 0 10px;
  }
+
+ /*
+  * GOOGLE MAPS API
+  */
+#map {
+  height: 500px;
+  width: 75%;
+  border: 1px solid #333;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+
+
+
+
+
+

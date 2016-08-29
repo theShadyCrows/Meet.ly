@@ -1,7 +1,6 @@
 /* 
  *  BEGIN: CUSTOM DROP-DOWN MENU FUNCTIONALITY
  */
-
 var selectBoxNodeList = document.getElementsByClassName('custom-drop-down-list');
 
 var testDivs = Array.prototype.filter.call(selectBoxNodeList, function(node){
