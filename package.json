@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/mattyun/Meet.ly#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.4.3",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.0",
     "cors": "^2.7.1",
