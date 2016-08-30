@@ -1,0 +1,181 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+input {
+  font-size: 14px;
+  line-height: 24px;
+  height: 24px;
+  padding: 4px 8px;
+  width: 240px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  margin:4px 8px;
+}
+
+
+
+/* HEADER ======================================================== */
+
+/*header {
+  position: relative;
+  width: 100%;
+}*/
+
+.top-area {
+  background: #e6e6e6;
+  margin-bottom: 24px;
+  /*border: 1px solid gray;*/
+
+  /* FIX BOTTOM */
+  /*position: absolute;
+  bottom: 0;
+  left: 0;*/
+}
+
+.top-area h1 {
+  display: inline-block;
+  margin: 16px 24px;
+}
+
+
+
+/* FORM AREA  ==================================================== */
+.form-area {
+  margin: 0 auto;
+  width: 70%;
+  border: 1px solid blue;
+  padding: 8px 16px;
+}
+
+.form {
+  text-align: center;
+  /*display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  width: 100%;*/
+}
+
+input.location-box,
+input.cat-type-box {
+
+}
+
+.form-area button {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px 16px;
+  font-weight: bold;
+  line-height: 24px;
+  font-size: 14px;
+  margin: 4px 8px;
+}
+.form-area button:hover {
+  color: #fff;
+  background: #000;
+}
+
+
+
+/* BEGIN: CUSTOM DROP-DOWN MENU STYES  =========================== */
+div.custom-drop-down-list {
+  display: inline-block;
+  margin-right: -16px;
+}
+
+.select-box {
+  cursor: pointer;
+}
+
+.options-list {
+  display: none;
+}
+
+ul.options-list {
+  list-style-type: none;
+  margin: 0;
+  margin: -4px 0 0 8px;
+  padding: 0;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background: #fff;
+  position: fixed;
+  z-index: 100;
+  text-align: left;
+}
+
+ul.options-list li {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+ul.options-list li:hover {
+  background: #ACCEF7;
+}
+
+.show {
+  display: block !important;
+}
+
+.select-open {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.drop-down-arrow-area {
+  padding: 0;
+  position: relative;
+  top: 1.25em;
+  right: 2.5em;
+  float: right;
+  cursor: pointer;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid black;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid black;
+}
+/* END: CUSTOM DROP-DOWN MENU STYES  ============================= */
+
+
+
+/* GOOGLE MAPS API  ============================================== */
+.map-container {
+  margin: 0 auto;
+  width: 670px;
+}
+
+#map {
+  height: 400px;
+  width: 650px;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+
+
+
+
+
+

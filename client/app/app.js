@@ -1,34 +1,51 @@
 // Set up our Front-End Framework using AngularJS
 
-  // Instantiate the app
-  angular.module('MeetlyApp', ['MeetlyApp.form', 'MeetlyApp.services']);
+// Instantiate the app
+angular.module('MeetlyApp', [
+  'MeetlyApp.form',
+  'MeetlyApp.map',
+  'MeetlyApp.services',
+  'ui.router'])
 
-  /*
-  // ???
-  .config(function ($routeProvider, $httpProvider) {
-    $routeProvider
-      .when('/signin', {
-        templateUrl: 'app/auth/signin.html',
-        controller: 'AuthController'
-      })
-      .when('/signup', {
-        templateUrl: 'app/auth/signup.html',
-        controller: 'AuthController'
-      })
-      // Your code here
+.config(function($stateProvider, $urlRouterProvider) {
+    
+    $urlRouterProvider.otherwise('/');
 
-      .when('/links', {
-        templateUrl: 'app/links/links.html',
-        controller: 'LinksController',
-        authenticate: true
-      })
-      .when('/shorten', {
-        templateUrl: 'app/shorten/shorten.html',
-        controller: 'ShortenController',
-        authenticate: true
-      })
-      .otherwise({
-        redirectTo: '/links'
-      });
-  });
-    */
+    $stateProvider
+    .state('home', {
+        url: '/',
+        templateUrl: 'app/views/form.html'
+    })
+    .state('map-view', {
+      url: '/map-view',
+      templateUrl: 'app/views/map-view.html'
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
