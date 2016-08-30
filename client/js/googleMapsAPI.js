@@ -3,7 +3,7 @@
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
 
-function initMap(locations) {
+var initMap = function (locations) {
 
   
   var locations = [
@@ -60,11 +60,11 @@ function initMap(locations) {
 
 
 
-}
+};
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
-}  
+};

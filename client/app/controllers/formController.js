@@ -1,12 +1,20 @@
 // This AngularJS controller is used for form submission
 angular.module('MeetlyApp.form', [])
 .controller('formController', function($scope, validateFormFactory, httpRequestsFactory) {
-  
-  // Validate form before sending GET request
-  $scope.submitForm = function(selectedCat, selectedType, location) {
-    $scope.postRequest = validateFormFactory.toValidate(selectedCat, selectedType, location);
-    // console.log($scope.postRequest);
-    initMeetSearch();
+
+  $scope.selectedCat = '-- Select Category --';
+  $scope.postRequest;
+  dropDown($scope);
+
+  // Caputure form data and validate before sending request
+  $scope.submitForm = function(selectedCat, inputType, inputLocation) {
+    $scope.postRequest = validateFormFactory.toValidate($scope.selectedCat, $scope.inputType, $scope.inputLocation);
+    if ($scope.postRequest) {
+      initMeetSearch();
+    } else {
+      // HANDLE VALIDATION ERROR
+    }
+    
   }
 
   // Send form data to server API router
@@ -14,9 +22,13 @@ angular.module('MeetlyApp.form', [])
   var initMeetSearch = function () {
     httpRequestsFactory.postRequest($scope.postRequest)
       .then(function (searchResults) {
-        // console.log('========>', searchResults);
         $scope.data.results = searchResults;
-        console.log('loc: ', $scope.data.results.businesses[0].location.coordinate);
+        console.log('$scope.data.results ===> ', $scope.data.results)
+        // console.log('loc: ', $scope.data.results.businesses[0].location.coordinate);
+
+        // PARSE OBJECT DATA
+        
+
         initGoogleMaps();
       })
       .catch(function (error) {
@@ -35,4 +47,8 @@ angular.module('MeetlyApp.form', [])
       // })
   };
 
+
 });
+
+
+

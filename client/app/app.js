@@ -12,7 +12,6 @@ angular.module('MeetlyApp', [
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-    // HOME STATES AND NESTED VIEWS ========================================
     .state('home', {
         url: '/',
         templateUrl: 'app/views/form.html'
@@ -20,7 +19,8 @@ angular.module('MeetlyApp', [
     .state('map-view', {
       url: '/map-view',
       templateUrl: 'app/views/map-view.html'
-    })
+    });
+
 
 
 
