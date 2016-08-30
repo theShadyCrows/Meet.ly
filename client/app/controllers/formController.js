@@ -1,21 +1,25 @@
-// This AngularJS controller is used for form submission
+// CONTROLLER USED TO HANDLE MEET INVITE FORM DATA
 angular.module('MeetlyApp.form', [])
-.controller('formController', function($scope, validateFormFactory, httpRequestsFactory) {
+.controller('formController', function($scope, validateFormFactory, httpRequestsFactory, storeData) {
 
-  $scope.selectedCat = '-- Select Category --';
-  $scope.postRequest;
+  // SET VARIABLES 
+  $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
+  
+  // CREATE CUSTOM DROP DOWN CONTAINER
   dropDown($scope);
 
   // Caputure form data and validate before sending request
-  $scope.submitForm = function(selectedCat, inputType, inputLocation) {
-    $scope.postRequest = validateFormFactory.toValidate($scope.selectedCat, $scope.inputType, $scope.inputLocation);
+  // HANDLE FORM SUBMISSION AND VALIDATE DATA
+  $scope.submitForm = function(selectedCat, inputType, inputLocation, selectDate) {
+    $scope.postRequest = validateFormFactory.toValidate($scope.selectedCat, $scope.inputType, $scope.inputLocation, $scope.selectDate);
+    // console.log('SUBMISSION DATA: ', $scope.postRequest);
     if ($scope.postRequest) {
+      // DATA IS VALID AND CAN CALL YELP API POST REQUEST
       initMeetSearch();
     } else {
       // HANDLE VALIDATION ERROR
-    }
-    
-  }
+    };
+  };
 
   // Send form data to server API router
   $scope.data = {}; 
@@ -23,12 +27,11 @@ angular.module('MeetlyApp.form', [])
     httpRequestsFactory.postRequest($scope.postRequest)
       .then(function (searchResults) {
         $scope.data.results = searchResults;
-        console.log('$scope.data.results ===> ', $scope.data.results)
-        // console.log('loc: ', $scope.data.results.businesses[0].location.coordinate);
+        console.log('$scope.data.results ===> ', $scope.data.results);
 
-        // PARSE OBJECT DATA
+        // STORE DATA
+        storeData.set($scope.data.results);
         
-
         initGoogleMaps();
       })
       .catch(function (error) {
@@ -38,7 +41,8 @@ angular.module('MeetlyApp.form', [])
 
   // Google API
   var initGoogleMaps = function() {
-    httpRequestsFactory.googleMaps($scope.data.results.businesses[0].location.coordinate, 'userLoc');
+    // httpRequestsFactory.googleMaps($scope.data.results.businesses[0].location.coordinate, 'userLoc');
+    httpRequestsFactory.googleMaps($scope)
       // .then(function(data) {
       //   console.log('data: ', data);
       // })

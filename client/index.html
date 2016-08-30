@@ -4,6 +4,7 @@
   <title>Meet.ly</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -15,12 +16,17 @@
   <div ui-view></div>
 
   <!-- Scripts -->
+  <script src="vendors/jquery/jquery-3.1.0.js"></script>
+  <!-- <script src="vendors/jquery/jquery-3.1.0.min.js"></script> -->
+  <script async defer src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script async defer src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
   <script src="//code.angularjs.org/1.5.8/angular.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+  
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo"></script>
+
   <script src="js/main.js"></script>
-  <!-- <script src="js/googleMapsAPI.js"></script> -->
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo"></script>
   <script src="app/services/services.js"></script>
   <script src="app/controllers/mapController.js"></script>
   <script src="app/controllers/formController.js"></script>
