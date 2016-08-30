@@ -3,10 +3,9 @@ angular.module('MeetlyApp.map', [])
 .controller('mapController', function($scope, httpRequestsFactory, storeData) {
 
   // GET DATA
-  $scope.preParseData = storeData.get();
+  $scope.preParseData = storeData.get('apiResults');
   var parsedData = $scope.preParseData.businesses[0].location.coordinate;
   $scope.getData = parsedData;
-  console.log('====>>> ', parsedData.latitude, parsedData.longitude);
 
 
 
@@ -21,7 +20,7 @@ angular.module('MeetlyApp.map', [])
     var directionsService = new google.maps.DirectionsService;
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 14,
-      center: {lat: 40.7465051, lng: -73.9904466}//{lat: 37.77, lng: -122.447}
+      center: {lat: 40.7465051, lng: -73.9904466 }//{lat: 37.77, lng: -122.447}
     });
     directionsDisplay.setMap(map);
 
@@ -37,7 +36,7 @@ angular.module('MeetlyApp.map', [])
     directionsService.route({
       // origin: {lat: 37.77, lng: -122.447},  // Haight.
       // destination: {lat: 37.768, lng: -122.511},  // Ocean Beach.
-      origin: {lat: 40.7465051, lng: -73.9904466},
+      origin: { lat: 40.7465051, lng: -73.9904466 },
       destination: latlng,
       // Note that Javascript allows us to access the constant
       // using square brackets and a string value as its
@@ -54,6 +53,7 @@ angular.module('MeetlyApp.map', [])
 
 
   initMap();
+    
 
 });
  

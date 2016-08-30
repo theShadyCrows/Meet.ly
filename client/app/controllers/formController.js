@@ -27,10 +27,10 @@ angular.module('MeetlyApp.form', [])
     httpRequestsFactory.postRequest($scope.postRequest)
       .then(function (searchResults) {
         $scope.data.results = searchResults;
-        console.log('$scope.data.results ===> ', $scope.data.results);
+        // console.log('$scope.data.results ===> ', $scope.data.results);
 
         // STORE DATA
-        storeData.set($scope.data.results);
+        storeData.set('apiResults', $scope.data.results);
         
         initGoogleMaps();
       })
@@ -51,6 +51,32 @@ angular.module('MeetlyApp.form', [])
       // })
   };
 
+  // SET GEO-LOCATION
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  var geoLoc = {};
+
+  function success(pos) {
+    var crd = pos.coords;
+    geoLoc.lat = parseFloat(crd.latitude);
+    geoLoc.lng = parseFloat(crd.longitude);
+    storeData.set($scope.data.results);
+    console.log('geoLoc: ', geoLoc);
+    // console.log('Your current position is:');
+    // console.log('Latitude : ' + crd.latitude);
+    // console.log('Longitude: ' + crd.longitude);
+    // console.log('More or less ' + crd.accuracy + ' meters.');
+  };
+
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
+
+  navigator.geolocation.getCurrentPosition(success, error, options);
 
 });
 

@@ -88,12 +88,16 @@ angular.module('MeetlyApp.services', [])
 .factory('storeData', function() {
   var storedData = {};
 
-  function set(data) {
+  function set(objName, data) {
+    // storedData[objName] = data
+    // console.log('storedData: ', storedData);
+
     storedData = data;
   };
 
-  function get() {
-    return storedData;
+  function get(objName) {
+    // return storedData[objName];
+    return storedData
   }
 
   return {
