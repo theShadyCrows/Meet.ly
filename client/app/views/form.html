@@ -34,8 +34,17 @@
     <input class="location-box" type="text" name="location" ng-model="inputLocation" placeholder="Location">
     <!-- END: location -->
 
-    <!-- START submit form button -->
-    <button ng-click="submitForm(selectedCat, inputType, inputLocation)">Submit</button>
-    <!-- START submit form button -->
+    <!-- START: calendar -->
+    <input type="text" name="selectInviteDate" value="" id="datepicker" ng-model="selectDate" placeholder="Invite Date">
+    <script>
+        $(function() {
+            $('#datepicker').datepicker();
+        });
+    </script>
+    <!-- END: calendar -->
+
+    <!-- START: submit form button -->
+    <button ng-click="submitForm(selectedCat, inputType, inputLocation, selectDate)">Submit</button>
+    <!-- END: submit form button -->
   </div>
 </article>

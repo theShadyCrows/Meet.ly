@@ -1,8 +1,9 @@
-// Set up app Factory Services
+// APPLICATION FACTORY SERVICES
 angular.module('MeetlyApp.services', [])
+
+// FORM DATA VALIDATION
 .factory('validateFormFactory', function() {
-    // Form validation
-    var toValidate = function(category, type, location) {
+    var toValidate = function(category, type, location, date) {
 
       if (category !== '-- Select Category --' || category !== null || category !== undefined) {
         // HANDLE OK
@@ -16,8 +17,12 @@ angular.module('MeetlyApp.services', [])
         // HANDLE OK
       }
 
+      if (date !== '' || date !== null || category !== date) {
+        // HANDLE OK
+      }
+
       // RETURN VALID OBJECT
-      return {category: category, type: type, location: location}
+      return {category: category, type: type, location: location, date: date}
     };
   
   return {
@@ -25,8 +30,8 @@ angular.module('MeetlyApp.services', [])
   };
 })
 
+// HANDLE ALL HTTP REQUESTS
 .factory('httpRequestsFactory', function($location, $http) {
-  // Handle GET and POST requests
   var postRequest = function(params) {
     // console.log('====> ', params);
     return $http({
@@ -42,11 +47,12 @@ angular.module('MeetlyApp.services', [])
     });
   };
 
-  var googleMaps = function(locations) {
+  var googleMaps = function() {
 
     alert('START GOOGLE MAPS');
 
     $location.path('/map-view');
+
 
     // $http({
     //   method: 'POST',
@@ -58,17 +64,6 @@ angular.module('MeetlyApp.services', [])
     // .catch(function(error) {
     //   console.error(error);
     // });
-
-
-
-    // console.log('GOOGLE MAPS');
-    // console.log('busLoc: ', busLoc);
-
-    // var busLocObj = {};
-    // busLocObj.lat = busLoc.latitude;
-    // busLocObj.lng = busLoc.longitude;
-
-    // initMap(busLocObj);
 
     // return $http({
     //   method: 'POST',
@@ -87,7 +82,32 @@ angular.module('MeetlyApp.services', [])
     postRequest: postRequest,
     googleMaps: googleMaps
   }
+})
+
+// SET AND GET DATA
+.factory('storeData', function() {
+  var storedData = {};
+
+  function set(objName, data) {
+    // storedData[objName] = data
+    // console.log('storedData: ', storedData);
+
+    storedData = data;
+  };
+
+  function get(objName) {
+    // return storedData[objName];
+    return storedData
+  }
+
+  return {
+    set: set,
+    get: get
+  }
 });
+
+
+
 
 // params (in the URL) is for GET requests
 // body (in the HTML) is for POST requests

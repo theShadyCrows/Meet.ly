@@ -15,14 +15,27 @@ input {
   width: 240px;
   border-radius: 6px;
   border: 1px solid #333;
+  margin:4px 8px;
 }
 
 
 
 /* HEADER ======================================================== */
+
+/*header {
+  position: relative;
+  width: 100%;
+}*/
+
 .top-area {
   background: #e6e6e6;
   margin-bottom: 24px;
+  /*border: 1px solid gray;*/
+
+  /* FIX BOTTOM */
+  /*position: absolute;
+  bottom: 0;
+  left: 0;*/
 }
 
 .top-area h1 {
@@ -41,6 +54,7 @@ input {
 }
 
 .form {
+  text-align: center;
   /*display: inline-block;
   vertical-align: top;
   margin: 0 auto;
@@ -61,6 +75,7 @@ input.cat-type-box {
   font-weight: bold;
   line-height: 24px;
   font-size: 14px;
+  margin: 4px 8px;
 }
 .form-area button:hover {
   color: #fff;
@@ -86,6 +101,7 @@ div.custom-drop-down-list {
 ul.options-list {
   list-style-type: none;
   margin: 0;
+  margin: -4px 0 0 8px;
   padding: 0;
   border-right: 1px solid #333;
   border-bottom: 1px solid #333;
@@ -95,6 +111,7 @@ ul.options-list {
   background: #fff;
   position: fixed;
   z-index: 100;
+  text-align: left;
 }
 
 ul.options-list li {
@@ -118,8 +135,8 @@ ul.options-list li:hover {
 .drop-down-arrow-area {
   padding: 0;
   position: relative;
-  top: 1em;
-  right: 1.80em;
+  top: 1.25em;
+  right: 2.5em;
   float: right;
   cursor: pointer;
 }
