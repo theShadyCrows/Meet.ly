@@ -2,8 +2,22 @@
 angular.module('MeetlyApp.services', [])
 .factory('validateFormFactory', function() {
     // Form validation
-    var toValidate = function(arg1, arg2, arg3) {
-      return {'category': arg1, 'type': arg2, 'location': arg3};
+    var toValidate = function(category, type, location) {
+
+      if (category !== '-- Select Category --' || category !== null || category !== undefined) {
+        // HANDLE OK
+      }
+
+      if (type !== '' || category !== null || category !== undefined) {
+        // HANDLE OK
+      }
+
+      if (location !== '' || category !== null || category !== undefined) {
+        // HANDLE OK
+      }
+
+      // RETURN VALID OBJECT
+      return {category: category, type: type, location: location}
     };
   
   return {
@@ -11,10 +25,10 @@ angular.module('MeetlyApp.services', [])
   };
 })
 
-.factory('httpRequestsFactory', function($http) {
+.factory('httpRequestsFactory', function($location, $http) {
   // Handle GET and POST requests
   var postRequest = function(params) {
-    console.log('====> ', params);
+    // console.log('====> ', params);
     return $http({
       method: 'POST',
       url: '/api/yelpAPI',
@@ -22,26 +36,39 @@ angular.module('MeetlyApp.services', [])
     })
     .then(function (response) {
       return response.data;
+    })
+    .catch(function (error) {
+      console.error(error);
     });
   };
 
-  var googleMaps = function(busLoc, userLoc) {
+  var googleMaps = function(locations) {
 
-    /*
-     * GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
-     */
+    alert('START GOOGLE MAPS');
 
-    console.log('GOOGLE MAPS');
+    $location.path('/map-view');
+
+    // $http({
+    //   method: 'POST',
+    //   url: '/api/GoogleMapsAPI',
+    //   data: locations
+    // }).success(function(data) {
+    //   $location.path('/map-view');
+    // })
+    // .catch(function(error) {
+    //   console.error(error);
+    // });
+
+
+
+    // console.log('GOOGLE MAPS');
     // console.log('busLoc: ', busLoc);
 
-    var busLocObj = {};
-    busLocObj.lat = busLoc.latitude;
-    busLocObj.lng = busLoc.longitude;
+    // var busLocObj = {};
+    // busLocObj.lat = busLoc.latitude;
+    // busLocObj.lng = busLoc.longitude;
 
-
-    initMap(busLocObj);
-
-
+    // initMap(busLocObj);
 
     // return $http({
     //   method: 'POST',
@@ -50,6 +77,9 @@ angular.module('MeetlyApp.services', [])
     // })
     // .then(function (response) {
     //   return response.data;
+    // })
+    // .catch(function (error) {
+    //   console.error(error);
     // });
   };
 

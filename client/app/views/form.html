@@ -1,10 +1,9 @@
-<div class="form-area">
-    
-  <div class="menu-selection" ng-controller="formController">
+<article class="form-area">
+  <div class="form" ng-controller="formController">
     <!-- START: select category -->
     <div class="custom-drop-down-list">
       <div class="drop-down-arrow-area arrow-down"></div>
-      <div class="select-box" ng-model="selectedCat">-- Select Category --</div>
+      <input type="text" name="input" value="{{selectedCat}}" class="select-box" ng-model="selectedCat" placeholder="-- Select Category --">
       <ul class="options-list">
         <li>-- Select Category --</li>
         <li>Arts &amp; Entertainment</li>
@@ -25,55 +24,18 @@
         <li>Real Estate</li>
       </ul>
     </div>
-    <!-- <select ng-model="selectedCat">
-      <option value="">-- Select Category --</option>
-      <option value="Outdoors">Outdoors</option>
-      <option value="Movies">Movies</option>
-      <option value="Restaurants">Restaurants</option>
-    </select> -->
     <!-- END: select category -->
 
     <!-- START: select category type -->
-    <div class="custom-drop-down-list">
-      <div class="drop-down-arrow-area arrow-down"></div>
-      <div class="select-box">-- Select Category Type --</div>
-      <ul class="options-list">
-        <li>-- Select Category Type --</li>
-        <li>Arts &amp; Entertainment</li>
-        <li>Automotive</li>
-        <li>Beauty &amp; Spas</li>
-        <li>Education</li>
-        <li>Event Planning &amp; Services</li>
-        <li>Financial Services</li>
-        <li>Food</li>
-        <li>Health &amp; Medical</li>
-        <li>Home Services</li>
-        <li>Local Services</li>
-        <li>Mass Media</li>
-        <li>Nightlife</li>
-        <li>Pets</li>
-        <li>Professional Services</li>
-        <li>Public Services &amp; Government</li>
-        <li>Real Estate</li>
-      </ul>
-    </div>
-    <!-- <select ng-model="selectedType">
-      <option value="">-- Select Type --</option>
-      <option value="Outdoors">Type 1</option>
-      <option value="Movies">Type 2</option>
-      <option value="Restaurants">Type 3</option>
-    </select> -->
-    <!-- END: select category -->
+    <input type="text" name="input" value="{{inputType}}" class="cat-type-box" ng-model="inputType" placeholder="Category Type">
+    <!-- END: select category type -->
 
     <!-- START: location -->
-    <input type="text" name="location" ng-model="location" />
+    <input class="location-box" type="text" name="location" ng-model="inputLocation" placeholder="Location">
     <!-- END: location -->
 
     <!-- START submit form button -->
-    <button ng-click="submitForm(selectedCat, selectedType, location)">Submit</button>
+    <button ng-click="submitForm(selectedCat, inputType, inputLocation)">Submit</button>
     <!-- START submit form button -->
   </div>
-</div>
-<script src="js/main.js"></script>
-<div ui-view></div>
-
+</article>
