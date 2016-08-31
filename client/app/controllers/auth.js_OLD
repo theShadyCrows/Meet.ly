@@ -1,0 +1,33 @@
+angular.module('MeetlyApp.auth', [])
+
+/**
+ * This controller is used by both login and signup and has methods for both
+ *
+ * NOTE: controllers are not singletons in Angular.
+ * A controller will be instantiated for each of the views it is connected to.
+ * As such, although login and signup both use the $scope.user object,
+ * the user object exists separately in memory for each view.
+ */
+.controller('AuthController', function ($scope, $window, $location, Auth) {
+  $scope.user = {};
+
+  $scope.login = function () {
+    Auth.login($scope.user)
+      .then(function (token) {f
+        $location.path('/tasks');
+      })
+      .catch(function (error) {
+        $location.path('/login');
+      });
+  };
+
+  $scope.signup = function () {
+    Auth.signup($scope.user)
+      .then(function (token) {
+        $location.path('/tasks');
+      })
+      .catch(function (error) {
+        $location.path('/login');
+      });
+  };
+});
