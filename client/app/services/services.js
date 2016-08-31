@@ -105,9 +105,3 @@ angular.module('MeetlyApp.services', [])
     get: get
   }
 });
-
-
-
-
-// params (in the URL) is for GET requests
-// body (in the HTML) is for POST requests

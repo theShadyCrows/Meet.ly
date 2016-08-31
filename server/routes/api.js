@@ -1,4 +1,7 @@
 var router = require("express").Router();
+
+//********** Yelp API **********//
+//require yelp module
 var request = require('request');
 var Yelp = require('yelp');
 
@@ -26,4 +29,26 @@ router.post("/yelpAPI", function(req, res) {
   });
 });
 
+//********** Authentication **********//
+//require jwt for tokens
+var jwt = require('express-jwt');
+//require controllers
+var ctrlSecured = require('../controllers/secured.js');
+var ctrlAuth = require('../controllers/authentication');
+
+var auth = jwt({
+  secret: 'MeetlySecret',
+  userProperty: 'payload'
+});
+
+// secured pages
+router.get('/dashboard', auth, ctrlSecured.profileRead);
+
+// signup and login
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
+
+
 module.exports = router;
+
+
