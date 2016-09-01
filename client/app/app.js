@@ -26,14 +26,7 @@ angular.module('MeetlyApp', [
         authenticate: true
     })
     .state('map-view', {      
-      url: '/map-view',
-<<<<<<< HEAD
-      templateUrl: 'app/views/map-view.html'
-    });
-
-
-});
-=======
+      url: '/map-view',      
       templateUrl: 'app/views/map-view.html',
       authenticate: true
     })
@@ -96,7 +89,3 @@ angular.module('MeetlyApp', [
 //   })
 //   })
 // })
-
-
-
->>>>>>> 0831
