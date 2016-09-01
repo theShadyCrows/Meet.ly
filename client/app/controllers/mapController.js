@@ -12,7 +12,7 @@ angular.module('MeetlyApp.map', [])
 
   // GOOGLE MAPS API  ============================================================
   // ** TO BE MOVED INTO THE SERVICE.JS FILES **
-  
+
   // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
 
   function initMap() {
@@ -53,7 +53,6 @@ angular.module('MeetlyApp.map', [])
 
 
   initMap();
-    
+
 
 });
- 

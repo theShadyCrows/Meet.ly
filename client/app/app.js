@@ -5,10 +5,11 @@ angular.module('MeetlyApp', [
   'MeetlyApp.form',
   'MeetlyApp.map',
   'MeetlyApp.services',
+  'MeetlyApp.yelp',
   'ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
-    
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -20,32 +21,6 @@ angular.module('MeetlyApp', [
       url: '/map-view',
       templateUrl: 'app/views/map-view.html'
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
