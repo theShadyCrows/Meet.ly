@@ -11,8 +11,21 @@ See deployment for notes on how to deploy the project on a live system.
 - Database: mySQL/Bookshelf/knex
 
 ## Front End Details
-/client/index.html
-/client/app/ ==> Contains application files (controllers, views, and services)
+Current File Structure:
+```
+[root]
+  |- /client/
+      |- /app/
+          |- /controllers/
+          |- /services/
+          |- /views/
+      |- /css/
+      |- /js/
+      |- /vendors/
+          |- jquery
+      |- index.html
+
+```
 
 ## Back End Details
 tba
