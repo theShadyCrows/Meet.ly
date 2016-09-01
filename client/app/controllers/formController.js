@@ -6,10 +6,7 @@ angular.module('MeetlyApp.form', [])
   // SET VARIABLES
   $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
 
-  // CREATE CUSTOM DROP DOWN CONTAINER
-  dropDown($scope);
-
-  // HANDLE FORM SUBMISSION AND VALIDATE DATA
+  // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
   $scope.submitForm = function(formSubmissionObj) {
     $scope.postRequest = validateFormFactory.toValidate(formSubmissionObj);
     
@@ -21,10 +18,9 @@ angular.module('MeetlyApp.form', [])
     };
   };
 
-  // Send form data to server API router
+  // SEND FORM DATA TO SERVER API ROUTER ==========================================================
   $scope.data = {};
   var initMeetSearch = function () {
-
     // PARSING OBJECT DATA TO PASS 'CATEGORY' AND 'LOCATION'
     // FOR YELP'S API SAERCH
     var sendReq = {
@@ -60,26 +56,33 @@ angular.module('MeetlyApp.form', [])
   //     // })
   // };
 
-  // SET GEO-LOCATION
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
+  // SET AND STORE GEO LOCATION ===================================================================
+  var geoLocator = function() {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    var geoLoc = {};
+
+    function success(pos) {
+      var crd = pos.coords;
+      geoLoc.lat = parseFloat(crd.latitude);
+      geoLoc.lng = parseFloat(crd.longitude);
+      storeData.set('geoLocation', geoLoc);
+    };
+
+    function error(err) {
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
   };
 
-  var geoLoc = {};
-
-  function success(pos) {
-    var crd = pos.coords;
-    geoLoc.lat = parseFloat(crd.latitude);
-    geoLoc.lng = parseFloat(crd.longitude);
-    storeData.set('geoLocation', geoLoc);
-  };
-
-  function error(err) {
-    console.warn('ERROR(' + err.code + '): ' + err.message);
-  };
-
-  navigator.geolocation.getCurrentPosition(success, error, options);
+  // INVOKE FUNCTIONS
+  dropDown($scope);   // DROP-DOWN LIST
+  selectMenu();       // TIME
+  geoLocator();       // GET GEO LOCATION
 
 });
