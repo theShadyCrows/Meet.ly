@@ -1,6 +1,6 @@
 // CONTROLLER USED TO HANDLE INVITE RESULTS PAGE
 angular.module('MeetlyApp.map', [])
-.controller('mapController', function($scope, httpRequestsFactory, storeData) {
+.controller('mapController', function($scope, httpRequestsFactory, storeData, citibikeFactory) {
   // SET VARIABLES
   
   // GET DATA
@@ -15,6 +15,8 @@ angular.module('MeetlyApp.map', [])
   // GOOGLE MAPS API  ============================================================
 
   // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
+  //citbike stored data
+  $scope.data = {};
 
   function initMap() {
     var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -29,6 +31,30 @@ angular.module('MeetlyApp.map', [])
     // document.getElementById('mode').addEventListener('change', function() {
     //   calculateAndDisplayRoute(directionsService, directionsDisplay);
     // });
+
+    //citibike markers
+    $scope.getData = function () {
+
+      citibikeFactory.getData()
+
+      .then(function (bikeRacks) {
+        console.log('---->',bikeRacks)
+        $scope.data.bikes = bikeRacks.data;
+
+        $scope.data.bikes.forEach(function(rack){
+          console.log('inside forEach', rack)
+          var image = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png';
+          var marker = new google.maps.Marker({
+              position: {lat: rack.lat/1000000, lng: rack.lng/1000000},
+              map: map,
+              icon: image
+              });
+        })
+
+      })
+
+    }
+
   }
 
   function calculateAndDisplayRoute(directionsService, directionsDisplay) {

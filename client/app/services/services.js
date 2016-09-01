@@ -99,8 +99,6 @@ angular.module('MeetlyApp.services', [])
   return {
     getData: getData
   };
-  console.log('%%%',getData);
-
 });
 
 
