@@ -1,6 +1,7 @@
 // CONTROLLER USED TO HANDLE INVITE RESULTS PAGE
 angular.module('MeetlyApp.map', [])
-.controller('mapController', function($scope, httpRequestsFactory, storeData, citibikeFactory) {
+
+.controller('mapController', function($scope, httpRequestsFactory, storeData) {
   // SET VARIABLES
   
   // GET DATA
@@ -12,13 +13,9 @@ angular.module('MeetlyApp.map', [])
   $scope.locationDetails = preParseData.businesses[0];
   console.log('$scope.locationDetails ==>', $scope.locationDetails);
 
-  // GOOGLE MAPS API  ============================================================
-
-  // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
-  //citbike stored data
-  $scope.data = {};
-
-  function initMap() {
+  // GOOGLE MAPS API  =============================================================================
+  var initMap = function() {
+    // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -79,8 +76,7 @@ angular.module('MeetlyApp.map', [])
     });
   }
 
-
-  initMap();
-
+  // INVOKE FUNCTIONS
+  initMap();    // GOOGLE MAPS
 
 });
