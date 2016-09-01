@@ -3,26 +3,33 @@ angular.module('MeetlyApp.services', [])
 
 // FORM DATA VALIDATION
 .factory('validateFormFactory', function() {
-    var toValidate = function(category, type, location, date) {
-
-      if (category !== '-- Select Category --' || category !== null || category !== undefined) {
+    var toValidate = function(obj) {
+      if (obj.place.f_category !== '-- Select Category --' || category !== null || category !== undefined) {
         // HANDLE OK
       }
 
-      if (type !== '' || category !== null || category !== undefined) {
+      if (obj.place.f_type !== '' || category !== null || category !== undefined) {
         // HANDLE OK
       }
 
-      if (location !== '' || category !== null || category !== undefined) {
+      if (obj.place.f_location !== '' || category !== null || category !== undefined) {
         // HANDLE OK
       }
 
-      if (date !== '' || date !== null || category !== date) {
+      if (obj.dateTime.f_date !== '' || date !== null || category !== date) {
+        // HANDLE OK
+      }
+
+      if (obj.dateTime.f_date !== '' || date !== null || category !== date) {
+        // HANDLE OK
+      }
+
+      if (obj.dateTime.f_time !== '' || date !== null || category !== date) {
         // HANDLE OK
       }
 
       // RETURN VALID OBJECT
-      return {category: category, type: type, location: location, date: date}
+      return {obj}
     };
   
   return {
@@ -33,7 +40,6 @@ angular.module('MeetlyApp.services', [])
 // HANDLE ALL HTTP REQUESTS
 .factory('httpRequestsFactory', function($location, $http) {
   var postRequest = function(params) {
-    // console.log('====> ', params);
     return $http({
       method: 'POST',
       url: '/api/yelpAPI',
@@ -47,40 +53,15 @@ angular.module('MeetlyApp.services', [])
     });
   };
 
-  var googleMaps = function() {
+  var friendsList = function() {
 
-    alert('START GOOGLE MAPS');
-
-    $location.path('/map-view');
-
-
-    // $http({
-    //   method: 'POST',
-    //   url: '/api/GoogleMapsAPI',
-    //   data: locations
-    // }).success(function(data) {
-    //   $location.path('/map-view');
-    // })
-    // .catch(function(error) {
-    //   console.error(error);
-    // });
-
-    // return $http({
-    //   method: 'POST',
-    //   url: '/api/GoogleMapsAPI',
-    //   data: params
-    // })
-    // .then(function (response) {
-    //   return response.data;
-    // })
-    // .catch(function (error) {
-    //   console.error(error);
-    // });
+    // TO ADD: GET AND POST REQUEST FOR FRIENDS LIST
+    
   };
 
   return {
     postRequest: postRequest,
-    googleMaps: googleMaps
+    friendsList: friendsList
   }
 })
 
@@ -89,15 +70,11 @@ angular.module('MeetlyApp.services', [])
   var storedData = {};
 
   function set(objName, data) {
-    // storedData[objName] = data
-    // console.log('storedData: ', storedData);
-
-    storedData = data;
+    storedData[objName] = data
   };
 
   function get(objName) {
-    // return storedData[objName];
-    return storedData
+    return storedData[objName];
   }
 
   return {

@@ -5,9 +5,10 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   font-size: 14px;
+  background: #e6e6e6;
 }
 
-input {
+/*input {
   font-size: 14px;
   line-height: 24px;
   height: 24px;
@@ -15,8 +16,8 @@ input {
   width: 240px;
   border-radius: 6px;
   border: 1px solid #333;
-  margin:4px 8px;
-}
+  margin: 8px;
+}*/
 
 
 
@@ -29,6 +30,7 @@ input {
 
 .top-area {
   background: #e6e6e6;
+  background: #999;
   margin-bottom: 24px;
   /*border: 1px solid gray;*/
 
@@ -48,6 +50,78 @@ input {
 /* FORM AREA  ==================================================== */
 .form-area {
   margin: 0 auto;
+  width: 50%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.form-area label {
+  display: block;
+}
+
+.form-area input {
+  font-size: 14px;
+  line-height: 24px;
+  height: 24px;
+  padding: 4px 8px;
+  width: 240px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  margin: 8px 0;
+  display: block;
+}
+
+.form-area button {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px 16px;
+  font-weight: bold;
+  line-height: 24px;
+  font-size: 14px;
+  width: 258px;
+  margin: 8px 0;
+}
+
+.form-area button:hover {
+  color: #fff;
+  background: #000;
+}
+
+.form-area .form-left {
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 16px;
+}
+
+.form-area .form-right {
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 16px;
+  float: right;
+}
+
+.form-area #invite-friends-container {
+  font-size: 14px;
+  line-height: 24px;
+  height: 186px;
+  padding: 4px 8px;
+  width: 240px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  margin: 8px 0;
+}
+
+#invite-friends-container .invite-add-friend {
+  width: 92%;
+  /*margin-left: -8px;*/
+}
+
+
+/*.form-area {
+  margin: 0 auto;
   width: 70%;
   border: 1px solid blue;
   padding: 8px 16px;
@@ -55,10 +129,7 @@ input {
 
 .form {
   text-align: center;
-  /*display: inline-block;
-  vertical-align: top;
-  margin: 0 auto;
-  width: 100%;*/
+
 }
 
 input.location-box,
@@ -80,7 +151,7 @@ input.cat-type-box {
 .form-area button:hover {
   color: #fff;
   background: #000;
-}
+}*/
 
 
 
@@ -101,7 +172,8 @@ div.custom-drop-down-list {
 ul.options-list {
   list-style-type: none;
   margin: 0;
-  margin: -4px 0 0 8px;
+  /*margin: -4px 0 0 8px;*/
+  margin: -8px 0 0 0 ;
   padding: 0;
   border-right: 1px solid #333;
   border-bottom: 1px solid #333;
@@ -135,7 +207,7 @@ ul.options-list li:hover {
 .drop-down-arrow-area {
   padding: 0;
   position: relative;
-  top: 1.25em;
+  top: 1.55em;
   right: 2.5em;
   float: right;
   cursor: pointer;
@@ -160,6 +232,49 @@ ul.options-list li:hover {
 
 
 
+/* INVITE RESULTS PAGE  ========================================== */
+.invite-container {
+  height: 200px;
+  width: 650px;
+  border: 1px solid black;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 8px;
+}
+
+.invite-container .invite-image {
+  display: inline-block;
+  border: 1px solid red;
+}
+
+.invite-image img {
+  border-radius: 6px;
+}
+
+.invite-container .invite-details {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid blue;
+}
+
+.invite-details ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.invite-details .location-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.invite-details .location-name a {
+  text-decoration: none;
+  color: blue;
+}
+
+
+
 /* GOOGLE MAPS API  ============================================== */
 .map-container {
   margin: 0 auto;
@@ -172,6 +287,8 @@ ul.options-list li:hover {
   border: 1px solid #333;
   border-radius: 6px;
 }
+
+
 
 
 

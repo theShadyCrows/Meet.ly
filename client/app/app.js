@@ -1,14 +1,17 @@
-// Set up our Front-End Framework using AngularJS
+// SET UP FRONT-END FRAMEWORK USING ANGULARJS
 
-// Instantiate the app
+// INSTANTIATE THE APPLICATION
 angular.module('MeetlyApp', [
   'MeetlyApp.form',
   'MeetlyApp.map',
+  'MeetlyApp.yelp',
   'MeetlyApp.services',
-  'ui.router'])
+  'ui.router'
+])
 
+// SET STATE AND ROUTER PROVIDERS FOR SPA
 .config(function($stateProvider, $urlRouterProvider) {
-    
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -20,32 +23,5 @@ angular.module('MeetlyApp', [
       url: '/map-view',
       templateUrl: 'app/views/map-view.html'
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 });

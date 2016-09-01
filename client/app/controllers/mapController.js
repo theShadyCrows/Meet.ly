@@ -1,18 +1,19 @@
 // CONTROLLER USED TO HANDLE INVITE RESULTS PAGE
 angular.module('MeetlyApp.map', [])
 .controller('mapController', function($scope, httpRequestsFactory, storeData) {
-
+  // SET VARIABLES
+  
   // GET DATA
-  $scope.preParseData = storeData.get('apiResults');
-  var parsedData = $scope.preParseData.businesses[0].location.coordinate;
-  $scope.getData = parsedData;
+  var preParseData = storeData.get('apiResults');
+  var originLocation = storeData.get('geoLocation');
+  console.log(originLocation);
 
-
-
+  // PARSE OBJECT DATA FOR LOCATION DETAILS AREA
+  $scope.locationDetails = preParseData.businesses[0];
+  console.log('$scope.locationDetails ==>', $scope.locationDetails);
 
   // GOOGLE MAPS API  ============================================================
-  // ** TO BE MOVED INTO THE SERVICE.JS FILES **
-  
+
   // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
 
   function initMap() {
@@ -32,11 +33,12 @@ angular.module('MeetlyApp.map', [])
 
   function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     // var selectedMode = document.getElementById('mode').value;
-    var latlng = new google.maps.LatLng(parsedData.latitude, parsedData.longitude);
+    var latlng = new google.maps.LatLng($scope.locationDetails.location.coordinate.latitude, $scope.locationDetails.location.coordinate.longitude);
+    console.log('latlng: ', latlng)
     directionsService.route({
       // origin: {lat: 37.77, lng: -122.447},  // Haight.
       // destination: {lat: 37.768, lng: -122.511},  // Ocean Beach.
-      origin: { lat: 40.7465051, lng: -73.9904466 },
+      origin: originLocation,
       destination: latlng,
       // Note that Javascript allows us to access the constant
       // using square brackets and a string value as its
@@ -53,7 +55,6 @@ angular.module('MeetlyApp.map', [])
 
 
   initMap();
-    
+
 
 });
- 
