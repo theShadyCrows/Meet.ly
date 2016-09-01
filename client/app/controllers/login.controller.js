@@ -13,7 +13,7 @@ angular.module('MeetlyApp.login', [])
         alert(err);
       })
       .then(function(){
-        $location.path('profile');
+        $location.path('dashboard');
       });
   };
 

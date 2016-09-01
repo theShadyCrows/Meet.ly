@@ -8,21 +8,9 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var Yelp = require('yelp');
-<<<<<<< HEAD
-var db = require('./server/db/config.js');
-var utilAuth = require('./server/lib/utilAuth')
 
-var User = require('./server/models/user');
-=======
-// var db = require('./server/config/config.js'); //OLD
-var utilAuth = require('./server/lib/utilAuth.js')
-
+// var utilAuth = require('./server/lib/utilAuth.js')
 var passport = require('passport');
-
-
-
-// var User = require('./server/models/user'); //OLD
->>>>>>> auth
 
 // configuration ===========================================
 // Bring in the data model
@@ -48,15 +36,11 @@ app.use(passport.initialize());
 
 // routes ==================================================
 /* Authentication Routes */
-<<<<<<< HEAD
-app.post("/login", utilAuth.checkPassword);
-app.post("/logout", utilAuth.destroySession);
-app.post("/signup", utilAuth.createUser);
-=======
+
 // app.post("/login", utilAuth.checkPassword);
 // app.post("/logout", utilAuth.destroySession);
 // app.post("/signup", utilAuth.createUser);
->>>>>>> auth
+
 /* API Routes */
 app.use("/api", apiRouter);
 

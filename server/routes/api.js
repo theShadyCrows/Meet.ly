@@ -43,12 +43,12 @@ var auth = jwt({
 
 // secured pages
 router.get('/dashboard', auth, ctrlSecured.profileRead);
+router.get('/friendsList', ctrlSecured.friendsList);
 
 // signup and login
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
+//********** Data Retrieval **********//
 
 module.exports = router;
-
-

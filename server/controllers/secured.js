@@ -20,3 +20,18 @@ module.exports.profileRead = function(req, res) {
   }
 
 };
+
+module.exports.friendsList = function(req, res) {
+
+//Need to add conditional for not sending back own username
+//Need to send back array without hashes
+ 
+    User
+      .find({})
+      // .where('email').ne(req.body.user)
+      .exec(function(err, user) {
+        res.status(200).json(user);
+      });
+  // }
+
+};

@@ -10,6 +10,8 @@ angular.module('MeetlyApp', [
   'MeetlyApp.register',
   'MeetlyApp.login',
   'MeetlyApp.dashboard',
+  'MeetlyApp.nav',
+  'MeetlyApp.signout',
   'ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -19,7 +21,8 @@ angular.module('MeetlyApp', [
     $stateProvider
     .state('home', {
         url: '/',
-        templateUrl: 'app/views/form.html'
+        templateUrl: 'app/views/form.html',
+        authenticate: true
     })
     .state('map-view', {      
       url: '/map-view',
@@ -39,7 +42,13 @@ angular.module('MeetlyApp', [
     .state('dashboard', {
       url: '/dashboard',
       templateUrl: 'app/views/dashboard.view.html',
-      controller: 'Dashboard'      
+      controller: 'Dashboard',
+      authenticate: true    
+    })
+    .state('signout', {
+      url: '/signout',
+      templateUrl: 'app/views/signout.view.html',
+      controller: 'Signout'      
     })
 
 })
