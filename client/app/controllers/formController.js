@@ -1,5 +1,6 @@
 // CONTROLLER USED TO HANDLE MEET INVITE FORM DATA
 angular.module('MeetlyApp.form', [])
+
 .controller('formController', function($scope, $location, validateFormFactory, httpRequestsFactory, storeData) {
 
   // SET VARIABLES
@@ -39,7 +40,8 @@ angular.module('MeetlyApp.form', [])
         // STORE DATA
         storeData.set('apiResults', $scope.data.results);
 
-        initGoogleMaps();
+        // REDIRECT TO RESULTS PAGE
+        $location.path('/map-view');
       })
       .catch(function (error) {
         console.error(error);
@@ -71,9 +73,7 @@ angular.module('MeetlyApp.form', [])
     var crd = pos.coords;
     geoLoc.lat = parseFloat(crd.latitude);
     geoLoc.lng = parseFloat(crd.longitude);
-    
     storeData.set('geoLocation', geoLoc);
-    console.log('geoLoc: ', geoLoc);
   };
 
   function error(err) {
