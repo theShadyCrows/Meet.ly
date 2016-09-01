@@ -21,7 +21,7 @@ db.knex.schema.hasTable('Users').then(function(exists){
       user.string('phoneNumber', 30);
       user.string('email', 100);
       user.timestamps();
-    }).then(function(table){
+    }).then(funtion(table){
       console.log('Created Table', table)
     })
   }
