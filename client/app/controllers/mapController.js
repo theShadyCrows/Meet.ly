@@ -3,9 +3,25 @@ angular.module('MeetlyApp.map', [])
 .controller('mapController', function($scope, httpRequestsFactory, storeData) {
 
   // GET DATA
-  $scope.preParseData = storeData.get('apiResults');
-  var parsedData = $scope.preParseData.businesses[0].location.coordinate;
-  $scope.getData = parsedData;
+  var preParseData = storeData.get('apiResults');
+
+  // PARSE OBJECT DATA FOR LOCATION DETAILS AREA
+  $scope.data.locationDetails = preParseData.businesses[0];
+  console.log('$scope.data.locationDetails ==>', $scope.data.locationDetails);
+  debugger;
+
+  // DISPLAY LOCATION DETAILS
+  
+
+
+
+
+
+
+
+
+
+
 
 
 
