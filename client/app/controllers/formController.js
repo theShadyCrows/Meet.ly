@@ -1,18 +1,17 @@
 // CONTROLLER USED TO HANDLE MEET INVITE FORM DATA
 angular.module('MeetlyApp.form', [])
-.controller('formController', function($scope, validateFormFactory, httpRequestsFactory, storeData) {
+.controller('formController', function($scope, $location, validateFormFactory, httpRequestsFactory, storeData) {
 
-  // SET VARIABLES 
+  // SET VARIABLES
   $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
-  
+
   // CREATE CUSTOM DROP DOWN CONTAINER
   dropDown($scope);
 
-  // Caputure form data and validate before sending request
   // HANDLE FORM SUBMISSION AND VALIDATE DATA
-  $scope.submitForm = function(selectedCat, inputType, inputLocation, selectDate) {
-    $scope.postRequest = validateFormFactory.toValidate($scope.selectedCat, $scope.inputType, $scope.inputLocation, $scope.selectDate);
-    // console.log('SUBMISSION DATA: ', $scope.postRequest);
+  $scope.submitForm = function(formSubmissionObj) {
+    $scope.postRequest = validateFormFactory.toValidate(formSubmissionObj);
+    
     if ($scope.postRequest) {
       // DATA IS VALID AND CAN CALL YELP API POST REQUEST
       initMeetSearch();
@@ -22,16 +21,24 @@ angular.module('MeetlyApp.form', [])
   };
 
   // Send form data to server API router
-  $scope.data = {}; 
+  $scope.data = {};
   var initMeetSearch = function () {
-    httpRequestsFactory.postRequest($scope.postRequest)
+
+    // PARSING OBJECT DATA TO PASS 'CATEGORY' AND 'LOCATION'
+    // FOR YELP'S API SAERCH
+    var sendReq = {
+      category: $scope.postRequest.obj.place.f_category,
+      // type: $scope.postRequest.obj.place.f_type,
+      location: $scope.postRequest.obj.place.f_location
+    }
+
+    httpRequestsFactory.postRequest(sendReq)
       .then(function (searchResults) {
         $scope.data.results = searchResults;
-        // console.log('$scope.data.results ===> ', $scope.data.results);
 
         // STORE DATA
         storeData.set('apiResults', $scope.data.results);
-        
+
         initGoogleMaps();
       })
       .catch(function (error) {
@@ -39,17 +46,17 @@ angular.module('MeetlyApp.form', [])
       });
   };
 
-  // Google API
-  var initGoogleMaps = function() {
-    // httpRequestsFactory.googleMaps($scope.data.results.businesses[0].location.coordinate, 'userLoc');
-    httpRequestsFactory.googleMaps($scope)
-      // .then(function(data) {
-      //   console.log('data: ', data);
-      // })
-      // .catch(function(error) {
-      //   console.error(error);
-      // })
-  };
+  // // Google API
+  // var initGoogleMaps = function() {
+  //   // httpRequestsFactory.googleMaps($scope.data.results.businesses[0].location.coordinate, 'userLoc');
+  //   httpRequestsFactory.googleMaps($scope)
+  //     // .then(function(data) {
+  //     //   console.log('data: ', data);
+  //     // })
+  //     // .catch(function(error) {
+  //     //   console.error(error);
+  //     // })
+  // };
 
   // SET GEO-LOCATION
   var options = {
@@ -64,12 +71,9 @@ angular.module('MeetlyApp.form', [])
     var crd = pos.coords;
     geoLoc.lat = parseFloat(crd.latitude);
     geoLoc.lng = parseFloat(crd.longitude);
-    storeData.set($scope.data.results);
+    
+    storeData.set('geoLocation', geoLoc);
     console.log('geoLoc: ', geoLoc);
-    // console.log('Your current position is:');
-    // console.log('Latitude : ' + crd.latitude);
-    // console.log('Longitude: ' + crd.longitude);
-    // console.log('More or less ' + crd.accuracy + ' meters.');
   };
 
   function error(err) {
@@ -79,6 +83,3 @@ angular.module('MeetlyApp.form', [])
   navigator.geolocation.getCurrentPosition(success, error, options);
 
 });
-
-
-

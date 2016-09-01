@@ -19,16 +19,33 @@
   },
   "homepage": "https://github.com/mattyun/Meet.ly#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.4.3",
     "body-parser": "^1.15.2",
+    "bookshelf": "^0.10.0",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.7.1",
     "express": "^4.14.0",
+    "express-jwt": "^3.0.1",
     "express-session": "^1.14.0",
+    "jsonwebtoken": "^5.0.4",
+    "knex": "^0.11.10",
     "method-override": "~2.0.2",
+    "mongoose": "^4.1.2",
+    "morgan": "~1.5.1",
+    "mysql": "^2.11.1",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
     "request": "^2.74.0",
+    "serve-favicon": "~2.2.0",
     "yelp": "^1.0.1"
   },
   "devDependencies": {
     "browser-sync": "^2.14.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "^3.1.0",
+    "pump": "^1.0.1"
   }
 }
