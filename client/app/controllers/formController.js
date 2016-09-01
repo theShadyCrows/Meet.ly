@@ -2,9 +2,9 @@
 angular.module('MeetlyApp.form', [])
 .controller('formController', function($scope, validateFormFactory, httpRequestsFactory, storeData) {
 
-  // SET VARIABLES 
+  // SET VARIABLES
   $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
-  
+
   // CREATE CUSTOM DROP DOWN CONTAINER
   dropDown($scope);
 
@@ -22,16 +22,16 @@ angular.module('MeetlyApp.form', [])
   };
 
   // Send form data to server API router
-  $scope.data = {}; 
+  $scope.data = {};
   var initMeetSearch = function () {
     httpRequestsFactory.postRequest($scope.postRequest)
       .then(function (searchResults) {
         $scope.data.results = searchResults;
-        // console.log('$scope.data.results ===> ', $scope.data.results);
+        console.log('$scope.data.results ===> ', $scope.data.results);
 
         // STORE DATA
         storeData.set('apiResults', $scope.data.results);
-        
+
         initGoogleMaps();
       })
       .catch(function (error) {
@@ -79,6 +79,3 @@ angular.module('MeetlyApp.form', [])
   navigator.geolocation.getCurrentPosition(success, error, options);
 
 });
-
-
-
