@@ -13,7 +13,9 @@ var yelp = new Yelp({
 });
 
 router.post("/yelpAPI", function(req, res) {    
-  yelp.search({ 
+  console.log('yelpAPI request handler')
+  console.log(req.body)
+  yelp.search({     
       term: req.body.category, // this will eventually be subcategories (e.g. Thai, Greek)
       // category_filter: req.body.category, //this will correspond to cateogry (e.g. Restaurant)
       location: req.body.location,
