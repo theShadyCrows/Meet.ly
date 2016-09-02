@@ -14,3 +14,6 @@ angular.module('MeetlyApp.dataServices',[])
     };
 
 })
+
+
+//**** add function for getting Invite info *****///
