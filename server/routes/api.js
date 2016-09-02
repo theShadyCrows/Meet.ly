@@ -13,14 +13,16 @@ var yelp = new Yelp({
 });
 
 router.post("/yelpAPI", function(req, res) {    
-  yelp.search({ 
-    category: req.body.place.f_category,
-    term: req.body.place.f_type,
-    location: req.body.place.f_location,
-    limit: 5,
-    sort: 2,
-    radius_filter: 600
-  })
+  console.log('yelpAPI request handler')
+  console.log(req.body)
+  yelp.search({     
+      term: req.body.category, // this will eventually be subcategories (e.g. Thai, Greek)
+      // category_filter: req.body.category, //this will correspond to cateogry (e.g. Restaurant)
+      location: req.body.location,
+      limit: 5,
+      sort: 2,
+      radius_filter: 600
+     })
   .then(function (data) {
     res.send(data);
   })
