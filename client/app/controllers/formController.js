@@ -21,15 +21,7 @@ angular.module('MeetlyApp.form', [])
   // SEND FORM DATA TO SERVER API ROUTER ==========================================================
   $scope.data = {};
   var initMeetSearch = function () {
-    // PARSING OBJECT DATA TO PASS 'CATEGORY' AND 'LOCATION'
-    // FOR YELP'S API SAERCH
-    var sendReq = {
-      category: $scope.postRequest.obj.place.f_category,
-      // type: $scope.postRequest.obj.place.f_type,
-      location: $scope.postRequest.obj.place.f_location
-    }
-
-    httpRequestsFactory.postRequest(sendReq)
+    httpRequestsFactory.postRequest($scope.postRequest.obj)
       .then(function (searchResults) {
         $scope.data.results = searchResults;
 
@@ -58,6 +50,7 @@ angular.module('MeetlyApp.form', [])
 
   // SET AND STORE GEO LOCATION ===================================================================
   var geoLocator = function() {
+    console.log('geoLocator')
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
