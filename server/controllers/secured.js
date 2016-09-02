@@ -35,3 +35,13 @@ module.exports.friendsList = function(req, res) {
   // }
 
 };
+
+
+//****** add Invite method *******//
+//similar to profileRead
+//need to use payload._id to find email, then
+//use email to find which invites to send back
+
+
+
+
