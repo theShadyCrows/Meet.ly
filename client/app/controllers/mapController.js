@@ -29,6 +29,7 @@ angular.module('MeetlyApp.map', [])
     });
     directionsDisplay.setMap(map);
     calculateAndDisplayRoute(directionsService, directionsDisplay);
+
     $scope.addMarkers = function() {
       console.log('helloooooo')
       // GET CITIBANK LOCATIONS
@@ -93,16 +94,6 @@ angular.module('MeetlyApp.map', [])
   //   }
   // };
   // END: TOGGLE CITIBIKE MARKERS
-
-
-
-
-
-
-
-
-
-
 
 
   // // GOOGLE MAPS API  =============================================================================

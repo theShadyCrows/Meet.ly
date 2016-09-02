@@ -14,13 +14,13 @@ var yelp = new Yelp({
 
 router.post("/yelpAPI", function(req, res) {    
   yelp.search({ 
-      category: req.body.place.f_category,
-      term: req.body.place.f_type,
-      location: req.body.place.f_location,
-      limit: 5,
-      sort: 2,
-      radius_filter: 600
-     })
+    category: req.body.place.f_category,
+    term: req.body.place.f_type,
+    location: req.body.place.f_location,
+    limit: 5,
+    sort: 2,
+    radius_filter: 600
+  })
   .then(function (data) {
     res.send(data);
   })

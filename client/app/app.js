@@ -20,8 +20,8 @@ angular.module('MeetlyApp', [
   'MeetlyApp.dashboard',
   'MeetlyApp.nav',
   'MeetlyApp.signout',
-  'ui.router',
-  'MeetlyApp.services'])
+  'MeetlyApp.services',
+  'ui.router'])
 
 // SET STATE AND ROUTER PROVIDERS FOR SPA
 .config(function($stateProvider, $urlRouterProvider) {
@@ -60,11 +60,9 @@ angular.module('MeetlyApp', [
       templateUrl: 'app/views/signout.view.html',
       controller: 'Signout'      
     })
-
 })
 
 .run(function ($rootScope, $location, $window, Auth, $state) {
-  console.log('run running')
   // Check whether the user is authenticated to navigate to a route or not on every
   // route change.
   $rootScope.$on('$stateChangeStart', function (event, next, prev) {

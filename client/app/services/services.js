@@ -4,23 +4,19 @@ angular.module('MeetlyApp.services', [])
 // FORM DATA VALIDATION ===========================================================================
 .factory('validateFormFactory', function() {
     var toValidate = function(obj) {
-      if (obj.place.f_category !== '-- Select Category --' || category !== null || category !== undefined) {
+      if (obj.place.f_category !== '-- Select Category --' || obj.place.f_category !== null || obj.place.f_category !== undefined) {
         // HANDLE OK
       }
 
-      if (obj.place.f_type !== '' || category !== null || category !== undefined) {
+      if (obj.place.f_type !== '' || obj.place.f_type !== null || obj.place.f_type !== undefined) {
         // HANDLE OK
       }
 
-      if (obj.place.f_location !== '' || category !== null || category !== undefined) {
+      if (obj.place.f_location !== '' || obj.place.f_location !== null || obj.place.f_location !== undefined) {
         // HANDLE OK
       }
 
-      if (obj.dateTime.f_date !== '' || date !== null || category !== date) {
-        // HANDLE OK
-      }
-
-      if (obj.dateTime.f_date !== '' || date !== null || category !== date) {
+      if (obj.dateTime.f_date !== '' || obj.dateTime.f_date !== null || obj.dateTime.f_date !== date) {
         // HANDLE OK
       }
 
@@ -41,6 +37,7 @@ angular.module('MeetlyApp.services', [])
 .factory('httpRequestsFactory', function($location, $http) {
 
   var postRequest = function(params) {
+    console.log('params ====> ', params)
     return $http({
       method: 'POST',
       url: '/api/yelpAPI',
@@ -50,6 +47,7 @@ angular.module('MeetlyApp.services', [])
       return response.data;
     })
     .catch(function (error) {
+      console.log('WE HAVE AN ERROR')
       console.error(error);
     });
   };
@@ -59,9 +57,8 @@ angular.module('MeetlyApp.services', [])
   // ======================================================
   var friendsList = function(friendsListObj) {
     return $http({
-      method: 'POST',
-      url: '/api/friendsList',
-      data: friendsListObj
+      method: 'GET',
+      url: '/api/friendsList'
     })
     .then(function (response) {
       return response.data;

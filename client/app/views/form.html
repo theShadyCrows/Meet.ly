@@ -1,6 +1,9 @@
 <article class="form-area" ng-controller="formController">
     
     <div class="form-left">
+        <label for="place">EVENT NAME</label>
+        <input type="text" name="eventName" value="" ng-model="inviteName" placeholder="Invite Name">
+
         <label for="place">PLACE</label>
         <!-- START: select category -->
         <div class="custom-drop-down-list">
@@ -57,17 +60,16 @@
         <div>FRIENDS</div>
         <div id="invite-friends-container">
             <ul>
-                <li>Howard</li>
-                <li>Fred</li>
-                <li>Robin</li>
-                <li>Gary</li>
-                <li>Jon</li>
+            <!-- {{friendsList}} -->
+                <li ng-repeat="friend in friendsList">{{friend.name}}, {{friend.email}}</li>
             </ul>
-            <input type="text" class="invite-add-friend" ng-model="friendsInvite" placeholder="Add Friend">
+            <!-- <input type="text" class="invite-add-friend" ng-model="friendsInvite" placeholder="Add Friend"> -->
         </div>
 
         <!-- START: submit form button -->
-        <button ng-click="submitForm({place: {f_category: selectedCat, f_type: inputType, f_location: inputLocation}, dateTime: {f_date: selectDate, f_time: inputTime}, f_friends: [friendsInvite]})">INVITE!</button>
+        <!-- <button ng-click="submitForm({place: {f_category: selectedCat, f_type: inputType, f_location: inputLocation}, dateTime: {f_date: selectDate, f_time: inputTime}, f_friends: [friendsInvite]})">INVITE!</button> -->
+        <button ng-click="submitForm({f_name: 'My Invite!', place: {f_category: 'Food', f_type: 'Mexican', f_location: '10001' }, dateTime: {f_date: '09/03/2016', f_time: '5:00pm'}, f_friends: [friendsInvite]})">INVITE!</button>
+
         <!-- END: submit form button -->
     </div>
     <div style="clear:both;"></div>
