@@ -16,7 +16,6 @@ angular.module('MeetlyApp.map', [])
   $scope.map.markersArray = [];
   $scope.map.destinationLatLng;
   $scope.map.markerImg = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png';
-  $scope.map.toggleMarkers = true;
 
   // START: INIT MAP
   var initMap = function() {
@@ -30,6 +29,32 @@ angular.module('MeetlyApp.map', [])
     });
     directionsDisplay.setMap(map);
     calculateAndDisplayRoute(directionsService, directionsDisplay);
+    $scope.addMarkers = function() {
+      console.log('helloooooo')
+      // GET CITIBANK LOCATIONS
+      citibikeFactory.getCitiBikeLocations()
+      .then(function(bikeRacks) {
+        console.log('bikeRacks', bikeRacks);
+        bikeRacks.data.forEach(function(rack) {
+          var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
+          var locM = new google.maps.LatLng(40.7465051, -73.9904466);
+          var geoLoc = new google.maps.LatLng(geoLocation.lat, geoLocation.lng);
+          distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
+
+          if (distance < 500) {
+            marker = new google.maps.Marker({
+              position: rackLoc,
+              map: map,
+              icon: $scope.map.markerImg
+            });
+           }
+        });
+
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+    }
   };
   // END: INIT MAP
 
@@ -55,41 +80,18 @@ angular.module('MeetlyApp.map', [])
   };
   // END: CALCULATE AND DISPLAY ROUTE
 
-  $scope.addMarkers = function() {
-    // GET CITIBANK LOCATIONS
-    citibikeFactory.getCitiBikeLocations()
-    .then(function(bikeRacks) {
-      bikeRacks.data.forEach(function(rack) {
-        var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
-        // var locM = new google.maps.LatLng(40.7465051, -73.9904466);
-        var geoLoc = new google.maps.LatLng(geoLocation.lat, geoLocation.lng);
-        distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
 
-        if (distance < 500) {
-          marker = new google.maps.Marker({
-            position: rackLoc,
-            map: map,
-            icon: $scope.map.markerImg
-          });
-        }
-      });
+  // $scope.map.toggleMarkers = true;
 
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  }
-
-
-  // START: TOGGLE CITIBIKE MARKERS
-  $scope.toggleCitiBikeMarkers = function() {
-    if (!$scope.toggleMarkers) {
-      alert('ADD MARKERS');
-      $scope.addMarkers();
-    } else {
-      alert('REMOVE MARKERS');
-    }
-  };
+  // // START: TOGGLE CITIBIKE MARKERS
+  // $scope.toggleCitiBikeMarkers = function() {
+  //   if (!$scope.map.toggleMarkers) {
+  //     alert('ADD MARKERS');
+  //     $scope.addMarkers();
+  //   } else {
+  //     alert('REMOVE MARKERS');
+  //   }
+  // };
   // END: TOGGLE CITIBIKE MARKERS
 
 

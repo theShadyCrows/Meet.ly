@@ -28,6 +28,7 @@ var selectMenu = function() {
  *  BEGIN: CUSTOM DROP-DOWN MENU FUNCTIONALITY
  */
 var dropDown = function($scope) {
+  console.log('-->', dropDown);
   var selectBoxNodeList = document.getElementsByClassName('custom-drop-down-list');
 
   var testDivs = Array.prototype.filter.call(selectBoxNodeList, function(node){
