@@ -6,6 +6,15 @@ angular.module('MeetlyApp.form', [])
   // SET VARIABLES
   $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
 
+  // PULL FRIENDS LIST AND APPEND TO PAGE =========================================================
+  httpRequestsFactory.friendsList()
+    .then(function (friends) {
+      $scope.friendsList = friends;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+
   // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
   $scope.submitForm = function(formSubmissionObj) {
     $scope.postRequest = validateFormFactory.toValidate(formSubmissionObj);
@@ -50,7 +59,6 @@ angular.module('MeetlyApp.form', [])
 
   // SET AND STORE GEO LOCATION ===================================================================
   var geoLocator = function() {
-    console.log('geoLocator')
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,

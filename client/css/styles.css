@@ -106,12 +106,25 @@ body {
 .form-area #invite-friends-container {
   font-size: 14px;
   line-height: 24px;
-  height: 186px;
+  height: 200px;
+  overflow: auto;
+  /*position: relative;*/
   padding: 4px 8px;
   width: 240px;
   border-radius: 6px;
   border: 1px solid #333;
   margin: 8px 0;
+}
+
+#invite-friends-container ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#invite-friends-container ul li {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 4px 0;
 }
 
 #invite-friends-container .invite-add-friend {
