@@ -24,8 +24,8 @@ angular.module('MeetlyApp', [
 
     $stateProvider
     .state('home', {
-        url: '/',
-        templateUrl: 'app/views/form.html'
+      url: '/',
+      templateUrl: 'app/views/form.html'
     })
     .state('map-view', {
       url: '/map-view',

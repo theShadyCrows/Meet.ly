@@ -234,17 +234,16 @@ ul.options-list li:hover {
 
 /* INVITE RESULTS PAGE  ========================================== */
 .invite-container {
-  height: 200px;
-  width: 650px;
+  height: 100px;
+  width: 568px;
   border: 1px solid black;
   border-radius: 6px;
   margin-bottom: 8px;
-  padding: 8px;
+  padding: 16px;
 }
 
 .invite-container .invite-image {
   display: inline-block;
-  border: 1px solid red;
 }
 
 .invite-image img {
@@ -254,13 +253,17 @@ ul.options-list li:hover {
 .invite-container .invite-details {
   display: inline-block;
   vertical-align: top;
-  border: 1px solid blue;
+  margin-left: 16px;
 }
 
 .invite-details ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.invite-details ul li{
+  padding-bottom: 8px;
 }
 
 .invite-details .location-name {
@@ -278,12 +281,12 @@ ul.options-list li:hover {
 /* GOOGLE MAPS API  ============================================== */
 .map-container {
   margin: 0 auto;
-  width: 670px;
+  width: 602px;
 }
 
 #map {
-  height: 400px;
-  width: 650px;
+  height: 300px;
+  width: 600px;
   border: 1px solid #333;
   border-radius: 6px;
 }

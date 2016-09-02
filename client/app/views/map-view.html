@@ -1,47 +1,49 @@
 <div class="map-container" ng-controller="mapController">
   <div class="invite-container">
     <div class="invite-image">
-      <!-- url -->
-      <!-- image_url -->
       <a href="{{ locationDetails.url }}" target="_blank">
         <img src="{{ locationDetails.image_url }}" alt="{{ locationDetails.name }}">
       </a>
-      <!-- <a href="http://www.yelp.com/biz/new-york-bakery-new-york?adjust_creative=ZZd9nkRObqyUruNcyW_U-Q&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=ZZd9nkRObqyUruNcyW_U-Q" target="_blank">
-        <img src="https://s3-media3.fl.yelpcdn.com/bphoto/DBJagcqFV5ZuUWR3BUBnKg/ms.jpg" alt="">
+      <!-- <a href="http://www.yelp.com/biz/the-treats-truck-new-york?adjust_creative=ZZd9nkRObqyUruNcyW_U-Q&amp;utm_campaign=yelp_api&amp;utm_medium=api_v2_search&amp;utm_source=ZZd9nkRObqyUruNcyW_U-Q" target="_blank">
+        <img src="https://s3-media1.fl.yelpcdn.com/bphoto/rCVgaOYGRdlHihEuLb660g/ms.jpg" alt="The Treats Truck">
       </a> -->
     </div>
     <div class="invite-details">
       <ul>
         <li class="location-name">
-          <!-- url -->
-          <!-- name -->
           <a href="{{ locationDetails.url }}" target="_blank">
             {{ locationDetails.name }}
           </a>
-          <!-- <a href="http://www.yelp.com/biz/new-york-bakery-new-york?adjust_creative=ZZd9nkRObqyUruNcyW_U-Q&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=ZZd9nkRObqyUruNcyW_U-Q" target="_blank">
-            New York Bakery
-          </a> -->
         </li>
         <li>
-          <!-- location.display_address [array [3]] -->
           {{ locationDetails.location.display_address[0] }}
-          <!-- 51 W 29th St<br>
-          New York, NY 10001<br> -->
         </li>
         <li>
-          <!-- display_phone -->
           {{ locationDetails.display_phone }}
-          <!-- +1-212-213-2838 -->
         </li>
         <li>
-          <!-- rating -->
           Rating: {{ locationDetails.rating }}
-          <!-- Rating: 4.5 -->
         </li>
       </ul>
+      <!-- <ul>
+        <li class="location-name">
+          <a href="http://www.yelp.com/biz/the-treats-truck-new-york?adjust_creative=ZZd9nkRObqyUruNcyW_U-Q&amp;utm_campaign=yelp_api&amp;utm_medium=api_v2_search&amp;utm_source=ZZd9nkRObqyUruNcyW_U-Q" target="_blank" class="ng-binding">
+            The Treats Truck
+          </a>
+        </li>
+        <li class="ng-binding">
+          Midtown West
+        </li>
+        <li class="ng-binding">
+          +1-212-691-5226
+        </li>
+        <li class="ng-binding">
+          Rating: 4.5
+        </li>
+      </ul> -->
     </div>
   </div>
   <div id="map"></div>
-  <button ng-click="getData()">Get City Bike Locations</button>
+  <button ng-click="toggleCitiBikeMarkers()">Get City Bike Locations</button>
 
 </div>

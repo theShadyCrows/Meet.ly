@@ -39,6 +39,7 @@ angular.module('MeetlyApp.services', [])
 
 // HANDLE ALL HTTP REQUESTS =======================================================================
 .factory('httpRequestsFactory', function($location, $http) {
+
   var postRequest = function(params) {
     return $http({
       method: 'POST',
@@ -93,6 +94,20 @@ angular.module('MeetlyApp.services', [])
     set: set,
     get: get
   }
+})
+
+// CITIBIKE API ===================================================================================
+.factory('citibikeFactory', function ($http) {
+  var getCitiBikeLocations = function () {
+    return $http({
+      method: 'GET',
+      url: 'http://api.citybik.es/citi-bike-nyc.json'
+    });
+  };
+
+  return {
+    getCitiBikeLocations: getCitiBikeLocations
+  };
 });
 
 // params (in the URL) is for GET requests

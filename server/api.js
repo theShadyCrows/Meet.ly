@@ -10,9 +10,13 @@ var yelp = new Yelp({
 });
 
 router.post("/yelpAPI", function(req, res) {    
-  yelp.search({ 
-      term: req.body.category, 
-      location: req.body.location,
+  console.log('req.body: ', req.body);
+  yelp.search({
+      // term: req.body.category, 
+      // location: req.body.location,
+      category: req.body.place.f_category,
+      term: req.body.place.f_type,
+      location: req.body.place.f_location,
       limit: 10,
       sort: 2,
       radius_filter: 400
