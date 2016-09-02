@@ -64,7 +64,6 @@ angular.module('MeetlyApp', [
 })
 
 .run(function ($rootScope, $location, $window, Auth, $state) {
-  console.log('run running')
   // Check whether the user is authenticated to navigate to a route or not on every
   // route change.
   $rootScope.$on('$stateChangeStart', function (event, next, prev) {

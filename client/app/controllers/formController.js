@@ -59,7 +59,6 @@ angular.module('MeetlyApp.form', [])
 
   // SET AND STORE GEO LOCATION ===================================================================
   var geoLocator = function() {
-    console.log('geoLocator')
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
