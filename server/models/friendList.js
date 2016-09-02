@@ -1,0 +1,10 @@
+
+
+
+
+
+
+
+
+
+mongoose.model('FriendList', friendSchema);
