@@ -10,7 +10,6 @@ angular.module('MeetlyApp.form', [])
   httpRequestsFactory.friendsList()
     .then(function (friends) {
       $scope.friendsList = friends;
-      console.log('FRIENDS ==>', $scope.friendsList)
     })
     .catch(function (error) {
       console.error(error);
