@@ -21,6 +21,7 @@ angular.module('MeetlyApp', [
   'MeetlyApp.nav',
   'MeetlyApp.signout',
   'MeetlyApp.invites',
+  'MeetlyApp.services',
   'ui.router'])
 
 // SET STATE AND ROUTER PROVIDERS FOR SPA
