@@ -1,4 +1,4 @@
-DROP DATABASE meet;
+
 CREATE DATABASE meet;
 
 USE meet;

@@ -82,6 +82,7 @@ angular.module('MeetlyApp.services', [])
     get: get
   }
 });
+<<<<<<< HEAD
 
 
 //citiBike factory
@@ -106,3 +107,5 @@ angular.module('MeetlyApp.services', [])
 
 // params (in the URL) is for GET requests
 // body (in the HTML) is for POST requests
+=======
+>>>>>>> 2e14e23580b877a7f968733811e16ab06eba7b56
