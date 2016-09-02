@@ -1,15 +1,18 @@
 // SET UP FRONT-END FRAMEWORK USING ANGULARJS
 
 // INSTANTIATE THE APPLICATION
+/*
+    APPLICATION DETAILS:
+    MeetlyApp         // DIRECTIVE THAT DEFINES & LINKS APP TO HTML PAGE
+    MeetlyApp.form    // CONTROLLER FOR FORM SUBMISSION [app/controlers/formController.js]
+    MeetlyApp.map     // CONTROLLER FOR INVITE RESULTS [app/controlers/mapController.js]
+    MeetlyApp.yelp    // CONTROLLER FOR YELP CONTENT [app/controlers/yelpController.js]
+    ui.router         // FOR SWITCHING VIEWS IN THE BROWSER
+*/
 angular.module('MeetlyApp', [
   'MeetlyApp.form',
   'MeetlyApp.map',
   'MeetlyApp.yelp',
-<<<<<<< HEAD
-  'MeetlyApp.services',
-  'ui.router'
-])
-=======
   'MeetlyApp.authServices',
   'MeetlyApp.dataServices',
   'MeetlyApp.register',
@@ -18,7 +21,6 @@ angular.module('MeetlyApp', [
   'MeetlyApp.nav',
   'MeetlyApp.signout',
   'ui.router'])
->>>>>>> 2e14e23580b877a7f968733811e16ab06eba7b56
 
 // SET STATE AND ROUTER PROVIDERS FOR SPA
 .config(function($stateProvider, $urlRouterProvider) {
@@ -27,18 +29,12 @@ angular.module('MeetlyApp', [
 
     $stateProvider
     .state('home', {
-        url: '/',
-        templateUrl: 'app/views/form.html',
-        authenticate: true
+      url: '/',
+      templateUrl: 'app/views/form.html',
+      authenticate: true
     })
     .state('map-view', {      
       url: '/map-view',
-<<<<<<< HEAD
-      templateUrl: 'app/views/map-view.html'
-    });
-    
-});
-=======
       templateUrl: 'app/views/map-view.html',
       authenticate: true
     })
@@ -101,7 +97,3 @@ angular.module('MeetlyApp', [
 //   })
 //   })
 // })
-
-
-
->>>>>>> 0831

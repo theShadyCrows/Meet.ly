@@ -1,3 +1,29 @@
+// JQUERY UI CUSTOM DROP DOWN SELECT MENU =========================================================
+var selectMenu = function() {
+  $('#selectTime').selectmenu();
+};
+
+  // $(function() {
+  //   $( "#speed" ).selectmenu();
+ 
+  //   $( "#files" ).selectmenu();
+ 
+  //   $( "#number" )
+  //     .selectmenu()
+  //     .selectmenu( "menuWidget" )
+  //       .addClass( "overflow" );
+ 
+  //   $( "#salutation" ).selectmenu();
+  // });
+
+
+
+
+
+
+
+
+
 /* 
  *  BEGIN: CUSTOM DROP-DOWN MENU FUNCTIONALITY
  */

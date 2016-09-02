@@ -1,7 +1,7 @@
 // APPLICATION FACTORY SERVICES
 angular.module('MeetlyApp.services', [])
 
-// FORM DATA VALIDATION
+// FORM DATA VALIDATION ===========================================================================
 .factory('validateFormFactory', function() {
     var toValidate = function(obj) {
       if (obj.place.f_category !== '-- Select Category --' || category !== null || category !== undefined) {
@@ -37,8 +37,9 @@ angular.module('MeetlyApp.services', [])
   };
 })
 
-// HANDLE ALL HTTP REQUESTS
+// HANDLE ALL HTTP REQUESTS =======================================================================
 .factory('httpRequestsFactory', function($location, $http) {
+
   var postRequest = function(params) {
     return $http({
       method: 'POST',
@@ -53,9 +54,21 @@ angular.module('MeetlyApp.services', [])
     });
   };
 
-  var friendsList = function() {
-
-    // TO ADD: GET AND POST REQUEST FOR FRIENDS LIST
+  // ======================================================
+  // TO DO: GET AND POST REQUEST FOR FRIENDS LIST
+  // ======================================================
+  var friendsList = function(friendsListObj) {
+    return $http({
+      method: 'POST',
+      url: '/api/friendsList',
+      data: friendsListObj
+    })
+    .then(function (response) {
+      return response.data;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
     
   };
 
@@ -65,7 +78,7 @@ angular.module('MeetlyApp.services', [])
   }
 })
 
-// SET AND GET DATA
+// SET AND GET DATA ===============================================================================
 .factory('storeData', function() {
   var storedData = {};
 
@@ -81,31 +94,22 @@ angular.module('MeetlyApp.services', [])
     set: set,
     get: get
   }
-});
-<<<<<<< HEAD
+})
 
-
-//citiBike factory
-
-.factory ('citibikeFactory', function ($http) {
-
-  var getData = function () {
-
+// CITIBIKE API ===================================================================================
+.factory('citibikeFactory', function ($http) {
+  var getCitiBikeLocations = function () {
     return $http({
       method: 'GET',
       url: 'http://api.citybik.es/citi-bike-nyc.json'
-    })    
+    });
   };
 
   return {
-    getData: getData
+    getCitiBikeLocations: getCitiBikeLocations
   };
 });
 
-
-
-
 // params (in the URL) is for GET requests
 // body (in the HTML) is for POST requests
-=======
->>>>>>> 2e14e23580b877a7f968733811e16ab06eba7b56
+
