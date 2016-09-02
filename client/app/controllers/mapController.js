@@ -30,6 +30,31 @@ angular.module('MeetlyApp.map', [])
     });
     directionsDisplay.setMap(map);
     calculateAndDisplayRoute(directionsService, directionsDisplay);
+
+    $scope.addMarkers = function() {
+    // GET CITIBANK LOCATIONS
+    citibikeFactory.getCitiBikeLocations()
+    .then(function(bikeRacks) {
+      bikeRacks.data.forEach(function(rack) {
+        var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
+        // var locM = new google.maps.LatLng(40.7465051, -73.9904466);
+        var geoLoc = new google.maps.LatLng(geoLocation.lat, geoLocation.lng);
+        distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
+
+        if (distance < 500) {
+          marker = new google.maps.Marker({
+            position: rackLoc,
+            map: map,
+            icon: $scope.map.markerImg
+          });
+        }
+      });
+
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  }
   };
   // END: INIT MAP
 
@@ -55,30 +80,7 @@ angular.module('MeetlyApp.map', [])
   };
   // END: CALCULATE AND DISPLAY ROUTE
 
-  $scope.addMarkers = function() {
-    // GET CITIBANK LOCATIONS
-    citibikeFactory.getCitiBikeLocations()
-    .then(function(bikeRacks) {
-      bikeRacks.data.forEach(function(rack) {
-        var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
-        // var locM = new google.maps.LatLng(40.7465051, -73.9904466);
-        var geoLoc = new google.maps.LatLng(geoLocation.lat, geoLocation.lng);
-        distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
-
-        if (distance < 500) {
-          marker = new google.maps.Marker({
-            position: rackLoc,
-            map: map,
-            icon: $scope.map.markerImg
-          });
-        }
-      });
-
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  }
+  
 
 
   // START: TOGGLE CITIBIKE MARKERS

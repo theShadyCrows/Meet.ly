@@ -57,13 +57,10 @@
         <div>FRIENDS</div>
         <div id="invite-friends-container">
             <ul>
-                <li>Howard</li>
-                <li>Fred</li>
-                <li>Robin</li>
-                <li>Gary</li>
-                <li>Jon</li>
+            <!-- {{friendsList}} -->
+                <li ng-repeat="friend in friendsList">{{friend.name}}, {{friend.email}}</li>
             </ul>
-            <input type="text" class="invite-add-friend" ng-model="friendsInvite" placeholder="Add Friend">
+            <!-- <input type="text" class="invite-add-friend" ng-model="friendsInvite" placeholder="Add Friend"> -->
         </div>
 
         <!-- START: submit form button -->

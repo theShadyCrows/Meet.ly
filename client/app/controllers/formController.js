@@ -6,6 +6,16 @@ angular.module('MeetlyApp.form', [])
   // SET VARIABLES
   $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
 
+  // PULL FRIENDS LIST AND APPEND TO PAGE =========================================================
+  httpRequestsFactory.friendsList()
+    .then(function (friends) {
+      $scope.friendsList = friends;
+      console.log('FRIENDS ==>', $scope.friendsList)
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+
   // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
   $scope.submitForm = function(formSubmissionObj) {
     $scope.postRequest = validateFormFactory.toValidate(formSubmissionObj);

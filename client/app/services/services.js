@@ -41,6 +41,7 @@ angular.module('MeetlyApp.services', [])
 .factory('httpRequestsFactory', function($location, $http) {
 
   var postRequest = function(params) {
+    console.log('params ====> ', params)
     return $http({
       method: 'POST',
       url: '/api/yelpAPI',
@@ -50,6 +51,7 @@ angular.module('MeetlyApp.services', [])
       return response.data;
     })
     .catch(function (error) {
+      console.log('WE HAVE AN ERROR')
       console.error(error);
     });
   };
@@ -59,9 +61,8 @@ angular.module('MeetlyApp.services', [])
   // ======================================================
   var friendsList = function(friendsListObj) {
     return $http({
-      method: 'POST',
-      url: '/api/friendsList',
-      data: friendsListObj
+      method: 'GET',
+      url: '/api/friendsList'
     })
     .then(function (response) {
       return response.data;
