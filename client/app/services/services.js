@@ -109,27 +109,7 @@ angular.module('MeetlyApp.services', [])
     getCitiBikeLocations: getCitiBikeLocations
   };
 });
-<<<<<<< HEAD
-
-
-//citiBike factory
-
-.factory ('citibikeFactory', function ($http) {
-
-  var getData = function () {
-
-    return $http({
-      method: 'GET',
-      url: 'http://api.citybik.es/citi-bike-nyc.json'
-    })    
-  };
-
-  return {
-    getData: getData
-  };
-});
 
 // params (in the URL) is for GET requests
 // body (in the HTML) is for POST requests
-=======
->>>>>>> 2e14e23580b877a7f968733811e16ab06eba7b56
+
