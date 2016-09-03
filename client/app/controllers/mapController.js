@@ -29,12 +29,13 @@ angular.module('MeetlyApp.map', [])
     });
     directionsDisplay.setMap(map);
     calculateAndDisplayRoute(directionsService, directionsDisplay);
+
     $scope.addMarkers = function() {
       console.log('helloooooo')
       // GET CITIBANK LOCATIONS
       citibikeFactory.getCitiBikeLocations()
       .then(function(bikeRacks) {
-        console.log('bikeRacks', bikeRacks);
+        //console.log('bikeRacks', bikeRacks);
         bikeRacks.data.forEach(function(rack) {
           var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
           var locM = new google.maps.LatLng(40.7465051, -73.9904466);
@@ -42,11 +43,15 @@ angular.module('MeetlyApp.map', [])
           distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
 
           if (distance < 500) {
-            marker = new google.maps.Marker({
+              marker = new google.maps.Marker({
               position: rackLoc,
               map: map,
               icon: $scope.map.markerImg
             });
+
+            $scope.map.markersArray.push(marker)
+            console.log('inside addMarker',$scope.map.markersArray)
+           
            }
         });
 
@@ -55,6 +60,48 @@ angular.module('MeetlyApp.map', [])
         console.error(error);
       });
     }
+     // Removes the markers from the map, but keeps them in the array.
+      $scope.clearMarkers = function() {
+        $scope.setMapOnAll(null);
+        console.log('inside clearMarkers',$scope.setMapOnAll(null));
+      }
+        //sets the markers onto the page
+      $scope.setMapOnAll= function(map) {
+        for (var i = 0; i < $scope.map.markersArray.length; i++) {
+          $scope.map.markersArray[i].setMap(map);
+          (console.log('inside setMap', $scope.map.markersArray[i]))
+        }
+      }
+
+     
+
+
+
+
+
+
+
+
+
+
+
+    // $scope.removeMarkers = function () {
+
+    //   if ($scope.flag) {
+    //     console.log('flag',$scope.flag)
+    //     console.log('marker in REMOVE MARKERS',$scope.map.markersArray)
+    //     $scope.map.markersArray.splice(0,$scope.map.markersArray.length)
+    //         console.log('removeMarkers', $scope.map.markersArray)
+    //   }
+    // }
+
+        // $scope.visible = true;
+        // $scope.addMarkers = function () {
+        //   console.log('testtest$$$')
+        //     $scope.visible = !$scope.visible;
+        // };
+
+
   };
   // END: INIT MAP
 
