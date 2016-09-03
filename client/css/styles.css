@@ -112,6 +112,10 @@ article {
   margin: 10px 0;
 }
 
+.form-control option:first-child {
+  color: red !important;
+}
+
 /* BOOTSTRAP STYLE HACK */
 .form-group {
   margin-bottom: 0 !important;

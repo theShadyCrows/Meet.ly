@@ -4,7 +4,7 @@ angular.module('MeetlyApp.services', [])
 // FORM DATA VALIDATION ===========================================================================
 .factory('validateFormFactory', function() {
     var toValidate = function(obj) {
-      if (obj.place.f_category !== '-- Select Category --' || obj.place.f_category !== null || obj.place.f_category !== undefined) {
+      if (obj.place.f_category !== 'Select Category' || obj.place.f_category !== null || obj.place.f_category !== undefined) {
         // HANDLE OK
       }
 

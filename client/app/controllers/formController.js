@@ -3,9 +3,34 @@ angular.module('MeetlyApp.form', [])
 
 .controller('formController', function($scope, $location, validateFormFactory, httpRequestsFactory, storeData) {
 
-  console.log('start');
   // SET VARIABLES
   $scope.formData = {};
+  $scope.categoryData = [
+      { name: 'Select Category' },
+      { name: 'Active Life' },
+      { name: 'Arts & Entertainment' },
+      { name: 'Automotive' },
+      { name: 'Beauty & Spas' },
+      { name: 'Education' },
+      { name: 'Event Planning & Services' },
+      { name: 'Financial Services' },
+      { name: 'Food' },
+      { name: 'Health & Medical' },
+      { name: 'Home Services' },
+      { name: 'Hotels & Travel' },
+      { name: 'Local Flavor' },
+      { name: 'Local Services' },
+      { name: 'Mass Media' },
+      { name: 'Nightlife' },
+      { name: 'Pets' },
+      { name: 'Professional Services' },
+      { name: 'Public Services & Government' },
+      { name: 'Real Estate' },
+      { name: 'Religious Organizations' },
+      { name: 'Restaurants' },
+      { name: 'Shopping' }
+    ];
+  $scope.selectedCategory = $scope.categoryData[0];
 
   // PULL FRIENDS LIST AND APPEND TO PAGE ===============================================
   httpRequestsFactory.friendsList()
@@ -26,7 +51,7 @@ angular.module('MeetlyApp.form', [])
     console.log('selected: ', $scope.selectedFriends)
   }
 
-  $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
+  // $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
 
   // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
   $scope.submitForm = function(formSubmissionObj) {
@@ -84,7 +109,6 @@ angular.module('MeetlyApp.form', [])
   };
 
   // INVOKE FUNCTIONS
-  dropDown($scope);   // DROP-DOWN LIST
   geoLocator();       // GET GEO LOCATION
 
 });
