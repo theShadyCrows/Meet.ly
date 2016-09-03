@@ -52,7 +52,8 @@ var auth = jwt({
 
 // secured pages
 router.get('/dashboard', auth, ctrlSecured.profileRead);
-router.get('/friendsList', ctrlSecured.friendsList);
+router.get('/friendsList', auth, ctrlSecured.friendsList);
+router.get('/invites', auth, ctrlSecured.invites);
 
 // signup and login
 router.post('/register', ctrlAuth.register);

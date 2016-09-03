@@ -11,7 +11,7 @@ var inviteSchema = new mongoose.Schema({
   location: String,
   category: String,
   type: Array,  
-  friends: Array
+  friends: Array //this should be changed to emails
 });
 
 inviteSchema.methods.setFriends = function(friendsOrig){
@@ -19,6 +19,13 @@ inviteSchema.methods.setFriends = function(friendsOrig){
   var splitArray = string.split(',');  
   this.friends = splitArray;
 };
+
+inviteSchema.methods.setType = function(typeOrig){
+  var typeArray = type.split(',').map(function(item){
+    return item.trim();
+  })
+  this.type = typeArray
+}
 
 
 mongoose.model('Invite', inviteSchema);
