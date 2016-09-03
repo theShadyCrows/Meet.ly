@@ -6,30 +6,33 @@ angular.module('MeetlyApp.form', [])
   // SET VARIABLES
   $scope.formData = {};
   $scope.categoryData = [
-      { name: 'Select Category' },
-      { name: 'Active Life' },
-      { name: 'Arts & Entertainment' },
-      { name: 'Automotive' },
-      { name: 'Beauty & Spas' },
-      { name: 'Education' },
-      { name: 'Event Planning & Services' },
-      { name: 'Financial Services' },
-      { name: 'Food' },
-      { name: 'Health & Medical' },
-      { name: 'Home Services' },
-      { name: 'Hotels & Travel' },
-      { name: 'Local Flavor' },
-      { name: 'Local Services' },
-      { name: 'Mass Media' },
-      { name: 'Nightlife' },
-      { name: 'Pets' },
-      { name: 'Professional Services' },
-      { name: 'Public Services & Government' },
-      { name: 'Real Estate' },
-      { name: 'Religious Organizations' },
-      { name: 'Restaurants' },
-      { name: 'Shopping' }
-    ];
+    { name: 'Select Category' },
+    { name: 'Active Life' },
+    { name: 'Arts & Entertainment' },
+    { name: 'Automotive' },
+    { name: 'Beauty & Spas' },
+    { name: 'Education' },
+    { name: 'Event Planning & Services' },
+    { name: 'Financial Services' },
+    { name: 'Food' },
+    { name: 'Health & Medical' },
+    { name: 'Home Services' },
+    { name: 'Hotels & Travel' },
+    { name: 'Local Flavor' },
+    { name: 'Local Services' },
+    { name: 'Mass Media' },
+    { name: 'Nightlife' },
+    { name: 'Pets' },
+    { name: 'Professional Services' },
+    { name: 'Public Services & Government' },
+    { name: 'Real Estate' },
+    { name: 'Religious Organizations' },
+    { name: 'Restaurants' },
+    { name: 'Shopping' }
+  ];
+
+  $scope.disableName = 'Select Category'
+
   $scope.selectedCategory = $scope.categoryData[0];
 
   // PULL FRIENDS LIST AND APPEND TO PAGE ===============================================
