@@ -1,249 +1,183 @@
-html,
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  font-size: 14px;
-  background: #e6e6e6;
+  font-size: 20px;
 }
 
-/*input {
-  font-size: 14px;
-  line-height: 24px;
-  height: 24px;
-  padding: 4px 8px;
-  width: 240px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  margin: 8px;
-}*/
-
-
-
-/* HEADER ======================================================== */
-
-/*header {
-  position: relative;
-  width: 100%;
-}*/
-
-.top-area {
-  background: #e6e6e6;
-  background: #999;
-  margin-bottom: 24px;
-  /*border: 1px solid gray;*/
-
-  /* FIX BOTTOM */
-  /*position: absolute;
-  bottom: 0;
-  left: 0;*/
+.clearfix:after { 
+ content: " ";
+ display: block; 
+ height: 0; 
+ clear: both;
 }
 
-.top-area h1 {
-  display: inline-block;
-  margin: 16px 24px;
-}
-
-
-
-/* FORM AREA  ==================================================== */
-.form-area {
-  margin: 0 auto;
-  width: 50%;
-  background: #fff;
-  border-radius: 6px;
-  padding: 8px;
-}
-
-.form-area label {
-  display: block;
-}
-
-.form-area input {
-  font-size: 14px;
-  line-height: 24px;
-  height: 24px;
-  padding: 4px 8px;
-  width: 240px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  margin: 8px 0;
-  display: block;
-}
-
-.form-area button {
-  cursor: pointer;
+/* HEADER & NAVIGATION ======================================= */
+header {
   border: 1px solid black;
-  border-radius: 6px;
-  background: #fff;
-  padding: 4px 16px;
-  font-weight: bold;
-  line-height: 24px;
-  font-size: 14px;
-  width: 258px;
-  margin: 8px 0;
-}
-
-.form-area button:hover {
+  margin: 0 auto;
+  min-height: 60px;
+  padding: 0 20px;
+  background: #1a1a1a;
   color: #fff;
-  background: #000;
 }
 
-.form-area .form-left {
-  display: inline-block;
-  vertical-align: top;
-  padding: 8px 16px;
+.fixed-nav {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-.form-area .form-right {
-  display: inline-block;
-  vertical-align: top;
-  padding: 8px 16px;
+header .logo {
+  float: left;
+}
+
+header .logo h1 {
+  margin: 10px 0;
+}
+
+header .logo h1 a {
+  text-decoration: none;
+  color: #ffffff;
+}
+header .logo h1 a:hover {
+  color: #00802b;
+}
+
+header .nav {
   float: right;
 }
 
-.form-area #invite-friends-container {
-  font-size: 14px;
-  line-height: 24px;
-  height: 200px;
-  overflow: auto;
-  /*position: relative;*/
-  padding: 4px 8px;
-  width: 240px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  margin: 8px 0;
-}
-
-#invite-friends-container ul {
+header .nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
-#invite-friends-container ul li {
-  border-bottom: 1px solid #e6e6e6;
-  padding: 4px 0;
+header .nav li {
+  float: left;
 }
 
-#invite-friends-container .invite-add-friend {
-  width: 92%;
-  /*margin-left: -8px;*/
+header .nav li a {
+  display: block;
+  text-align: center;
+  padding: 20px 40px;
+  text-decoration: none;
+  color: #fff;
 }
 
+header .nav li a:hover {
+  color: #00802b;
+}
 
-/*.form-area {
+/* ARTICLE BODY ======================================= */
+.body-wrapper {
+  padding: 20px;
+}
+
+article {
   margin: 0 auto;
   width: 70%;
-  border: 1px solid blue;
-  padding: 8px 16px;
+  border: 1px solid #00802b;
+  border-radius: 5px;
+  padding: 20px;
 }
 
-.form {
-  text-align: center;
+/* FORM ======================================= */
+.form-left {
+  float: left;
+  width: 40%;
+  vertical-align: top;
+}
+
+.form-right {
+  float: right;
+  width: 40%;
+  vertical-align: top;
+}
+
+.form label {
+  display: block;
+}
+
+.form input {
+  display: block;
+  width: 95%;
+  padding: 5px 5px;
+  border: 1px solid #00802b;
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* BOOTSTRAP STYLE HACK */
+.form-group {
+  margin-bottom: 0 !important;
+  width: 95% !important;
+}
+
+.form-control {
+  display: block !important;
+  border: 1px solid #00802b !important;
+  border-radius: 5px !important;
+  font-size: 20px !important;
+  margin: 10px 0 !important;
+  height: 40px;
+}
+
+#datetimepicker1 input.form-control {
+  margin: 0 !important;
+  border-right: none !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 
 }
 
-input.location-box,
-input.cat-type-box {
-
+.input-group-addon {
+  border: 1px solid #00802b;
+  border-left: 1px solid #00802b !important;
+  cursor: pointer;
 }
+/* END: BOOTSTRAP STYLE HACK */
 
-.form-area button {
+.form button {
   cursor: pointer;
   border: 1px solid black;
   border-radius: 6px;
-  background: #fff;
-  padding: 4px 16px;
-  font-weight: bold;
-  line-height: 24px;
-  font-size: 14px;
-  margin: 4px 8px;
+  width: 60%;
+  margin-left: 20%;
+  font-size: 20px;
+  padding: 15px 20px;
 }
-.form-area button:hover {
-  color: #fff;
-  background: #000;
-}*/
 
+.form button:hover {
+  color: #00802b;
+  background: #1a1a1a;
+}
 
+#friends-container {
+  width: 95%;
+  padding: 5px 5px;
+  border: 1px solid #00802b;
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 10px 0;
+  height: 210px;
+  max-height: 210px;
+  overflow: auto;
+}
 
-/* BEGIN: CUSTOM DROP-DOWN MENU STYES  =========================== */
-div.custom-drop-down-list {
+#friends-container div {
+  padding: 5px 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+#friends-container input {
   display: inline-block;
-  margin-right: -16px;
+  width: 5%;
 }
-
-.select-box {
-  cursor: pointer;
-}
-
-.options-list {
-  display: none;
-}
-
-ul.options-list {
-  list-style-type: none;
-  margin: 0;
-  /*margin: -4px 0 0 8px;*/
-  margin: -8px 0 0 0 ;
-  padding: 0;
-  border-right: 1px solid #333;
-  border-bottom: 1px solid #333;
-  border-left: 1px solid #333;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-  background: #fff;
-  position: fixed;
-  z-index: 100;
-  text-align: left;
-}
-
-ul.options-list li {
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-ul.options-list li:hover {
-  background: #ACCEF7;
-}
-
-.show {
-  display: block !important;
-}
-
-.select-open {
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
-.drop-down-arrow-area {
-  padding: 0;
-  position: relative;
-  top: 1.55em;
-  right: 2.5em;
-  float: right;
-  cursor: pointer;
-}
-
-.arrow-down {
-  width: 0; 
-  height: 0; 
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid black;
-}
-
-.arrow-up {
-  width: 0; 
-  height: 0; 
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid black;
-}
-/* END: CUSTOM DROP-DOWN MENU STYES  ============================= */
-
-
 
 /* INVITE RESULTS PAGE  ========================================== */
 .invite-container {
@@ -303,12 +237,6 @@ ul.options-list li:hover {
   border: 1px solid #333;
   border-radius: 6px;
 }
-
-
-
-
-
-
 
 
 

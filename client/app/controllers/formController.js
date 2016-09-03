@@ -3,21 +3,35 @@ angular.module('MeetlyApp.form', [])
 
 .controller('formController', function($scope, $location, validateFormFactory, httpRequestsFactory, storeData) {
 
+  console.log('start');
   // SET VARIABLES
-  $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
+  $scope.formData = {};
 
-  // PULL FRIENDS LIST AND APPEND TO PAGE =========================================================
+  // PULL FRIENDS LIST AND APPEND TO PAGE ===============================================
   httpRequestsFactory.friendsList()
-    .then(function (friends) {
-      $scope.friendsList = friends;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+  .then(function (friends) {
+    $scope.friendsList = friends;
+    console.log('friends: ', $scope.friendsList)
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+
+  // CREATE CHECKBOX FOR FRIENDS LIST ====================================================
+  $scope.selectedFriends = {
+      selected:{}
+  };
+
+  $scope.toggleCheckbox = function(friend) {
+    console.log('selected: ', $scope.selectedFriends)
+  }
+
+  $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
 
   // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
   $scope.submitForm = function(formSubmissionObj) {
     $scope.postRequest = validateFormFactory.toValidate(formSubmissionObj);
+    console.log('submitted form data: ', $scope.postRequest);
     
     if ($scope.postRequest) {
       // DATA IS VALID AND CAN CALL YELP API POST REQUEST
@@ -45,18 +59,6 @@ angular.module('MeetlyApp.form', [])
       });
   };
 
-  // // Google API
-  // var initGoogleMaps = function() {
-  //   // httpRequestsFactory.googleMaps($scope.data.results.businesses[0].location.coordinate, 'userLoc');
-  //   httpRequestsFactory.googleMaps($scope)
-  //     // .then(function(data) {
-  //     //   console.log('data: ', data);
-  //     // })
-  //     // .catch(function(error) {
-  //     //   console.error(error);
-  //     // })
-  // };
-
   // SET AND STORE GEO LOCATION ===================================================================
   var geoLocator = function() {
     var options = {
@@ -83,7 +85,6 @@ angular.module('MeetlyApp.form', [])
 
   // INVOKE FUNCTIONS
   dropDown($scope);   // DROP-DOWN LIST
-  selectMenu();       // TIME
   geoLocator();       // GET GEO LOCATION
 
 });
