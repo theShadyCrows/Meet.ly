@@ -4,15 +4,8 @@
     <input type="text" value="" ng-model="inviteName" placeholder="Invite Name">
 
     <label for="place">PLACE</label>
-    <!-- <input type="text" value="" placeholder="Select Category" ng-model="category"> -->
     <div class="form-group">
-      <select class="form-control" ng-model="category" placeholder="Select Category">
-        <option  value="" disabled selected>Select Category</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>
+      <select class="form-control" ng-options="category.name disable when category.name == disableName for category in categoryData track by category.name" ng-model="selectedCategory"></select>
     </div>
     <input type="text" value="{{categoryType}}" ng-model="categoryType" placeholder="Category Type">
     <input type="text" value="" ng-model="location" placeholder="Location">
@@ -39,18 +32,13 @@
   <div class="form-right">
     <label for="label">FRIENDS</label>
     <div id="friends-container">
-
-      <!-- <div ng-repeat="friend in friendsList">{{friend.name}}</div> -->
       <div ng-repeat="friend in friendsList">
         <input type="checkbox" value="{{friend.name}}" ng-model="selectedFriends.selected[friend.name]" ng-change="toggleCheckbox()"> {{friend.name}} (email: {{friend.email}})
       </div>
 
     </div>
-    <!-- <input type="text" placeholder="Placeholder"> -->
     <input type="text" value="" ng-model="addFriend" placeholder="Add friend">
     
-    <button ng-click="submitForm({f_name: inviteName, place: {f_category: category, f_type: categoryType, f_location: location}, dateTime: {f_date: eventDate, f_time: eventTime}, f_friends: [selectedFriends.selected]})">INVITE!</button>
+    <button ng-click="submitForm({f_name: inviteName, place: {f_category: selectedCategory.name, f_type: categoryType, f_location: location}, dateTime: {f_date: eventDate, f_time: eventTime}, f_friends: [selectedFriends.selected]})">INVITE!</button>
   </div>
-
-  {{values}}
 </article>
