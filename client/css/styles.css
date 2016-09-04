@@ -275,6 +275,7 @@ article {
   border-radius: 6px;
 }
 
+/* Invites Page  ============================================== */
 
 
 /* MEDIA QUERIES ==================================================*/
@@ -283,6 +284,12 @@ article {
     width: 48%;
   }
 }
+
+#inviteHeader {
+  text-align: center;
+}
+
+
 
 
 
