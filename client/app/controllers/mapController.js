@@ -1,23 +1,24 @@
 // CONTROLLER USED TO HANDLE INVITE RESULTS PAGE
 angular.module('MeetlyApp.map', [])
 
-.controller('mapController', function($scope, httpRequestsFactory, storeData, citibikeFactory) {
+.controller('mapController', function($scope, httpRequestsFactory, storeData, citibikeFactory, $sce) {
   // GET DATA & SET VARIABLES
   var preParseData = storeData.get('apiResults');
   var geoLocation = storeData.get('geoLocation');
 
   // PARSE OBJECT DATA FOR LOCATION DETAILS AREA
   $scope.locationDetails = preParseData.businesses[0];
+  $scope.frameUrl = $sce.trustAsResourceUrl($scope.locationDetails.url)
 
   // GOOGLE MAPS API  =============================================================================
   // SET VARIABLES
 
 
-  
 
 
 
- 
+
+
 
   $scope.map = {};
   $scope.map.marker;
@@ -26,7 +27,7 @@ angular.module('MeetlyApp.map', [])
   $scope.map.markerImg;
 
   // START: INIT MAP
-  
+
 
   var initMap = function() {
     // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
@@ -41,11 +42,11 @@ angular.module('MeetlyApp.map', [])
     calculateAndDisplayRoute(directionsService, directionsDisplay);
 
     $scope.addMarkers = function() {
-      
+
       // GET CITIBANK LOCATIONS
       citibikeFactory.getCitiBikeLocations()
       .then(function(bikeRacks) {
-       
+
         bikeRacks.data.forEach(function(rack) {
           //console.log('CITIBIKEDATA USED BIKES',rack.bikes);
           var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
@@ -55,8 +56,8 @@ angular.module('MeetlyApp.map', [])
            //console.log('GEOLOC',geoLoc.lat(),geoLoc.lng())
           var distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
           //console.log('distance',distance);
-          
-          //setting CITIBIKE marker image 
+
+          //setting CITIBIKE marker image
           $scope.image = function () {
             if (rack.free/(rack.bikes + rack.free) >=.90) {
               $scope.map.markerImg = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png'
@@ -79,7 +80,7 @@ angular.module('MeetlyApp.map', [])
             });
 
             $scope.map.markersArray.push(marker)
-           
+
             }
         });
 
@@ -101,7 +102,7 @@ angular.module('MeetlyApp.map', [])
         }
       }
 
-  
+
 
     // $scope.removeMarkers = function () {
 
@@ -126,7 +127,7 @@ angular.module('MeetlyApp.map', [])
   // START: CALCULATE AND DISPLAY ROUTE
   var calculateAndDisplayRoute = function(directionsService, directionsDisplay) {
     $scope.map.destinationLatLng = new google.maps.LatLng($scope.locationDetails.location.coordinate.latitude, $scope.locationDetails.location.coordinate.longitude);
-    
+
     directionsService.route({
       origin: geoLocation,
       destination: $scope.map.destinationLatLng,
