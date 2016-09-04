@@ -304,9 +304,11 @@ ul.options-list li:hover {
   border-radius: 6px;
 }
 
+/* Invites Page  ============================================== */
 
-
-
+#inviteHeader {
+  text-align: center;
+}
 
 
 
