@@ -11,7 +11,6 @@ var inviteSchema = new mongoose.Schema({
   location: String,
   category: String,
   type: Array,  
-<<<<<<< 40e487260714524e146552b5973f3b33a9c4a33c
   friends: Array //this should be changed to emails
 });
 
