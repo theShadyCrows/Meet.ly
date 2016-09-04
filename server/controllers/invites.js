@@ -28,6 +28,7 @@ module.exports.register = function(req, res) {
   invite.setFriends(req.body.f_friends);
   invite.setType(req.body.place.f_type);
 
+
 ////////*** Need to add error handling for save method below
 
   invite.save(function(err) {
