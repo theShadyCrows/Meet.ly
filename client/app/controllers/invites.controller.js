@@ -72,3 +72,5 @@ angular.module('MeetlyApp.invites', [])
  //    navigator.geolocation.getCurrentPosition(success, error, options);
  //  };
   
+=======
+>>>>>>> conflicts resolved

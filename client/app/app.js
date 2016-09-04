@@ -65,10 +65,7 @@ angular.module('MeetlyApp', [
       templateUrl: 'app/views/invites.view.html',
       controller: 'Invites'      
     })
-<<<<<<< cfc493919112af975bfbf00c814fc708ef8a100b
-=======
 
->>>>>>> invite view and controller created
 })
 
 .run(function ($rootScope, $location, $window, Auth, $state) {
