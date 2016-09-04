@@ -59,7 +59,7 @@ module.exports.invites = function(req, res) {
       .where('_id').equals(req.payload._id) //change to find by email
       // .where('email').ne(req.body.user)
       .exec(function(err, user) {
-        console.log('found');
+        console.log('found');        
         // console.log(user[0].name)  
         console.log(user);      
         res.status(200).json(user);
