@@ -11,13 +11,23 @@ angular.module('MeetlyApp.map', [])
 
   // GOOGLE MAPS API  =============================================================================
   // SET VARIABLES
+
+
+  
+
+
+
+ 
+
   $scope.map = {};
   $scope.map.marker;
   $scope.map.markersArray = [];
   $scope.map.destinationLatLng;
-  $scope.map.markerImg = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png';
+  $scope.map.markerImg;
 
   // START: INIT MAP
+  
+
   var initMap = function() {
     // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
     var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -31,18 +41,37 @@ angular.module('MeetlyApp.map', [])
     calculateAndDisplayRoute(directionsService, directionsDisplay);
 
     $scope.addMarkers = function() {
-      console.log('helloooooo')
+      
       // GET CITIBANK LOCATIONS
       citibikeFactory.getCitiBikeLocations()
       .then(function(bikeRacks) {
-        //console.log('bikeRacks', bikeRacks);
+       
         bikeRacks.data.forEach(function(rack) {
+          //console.log('CITIBIKEDATA USED BIKES',rack.bikes);
           var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
+          //console.log('RACKLOCK',rackLoc.lat(),rackLoc.lng())
           var locM = new google.maps.LatLng(40.7465051, -73.9904466);
           var geoLoc = new google.maps.LatLng(geoLocation.lat, geoLocation.lng);
-          distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
+           //console.log('GEOLOC',geoLoc.lat(),geoLoc.lng())
+          var distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
+          //console.log('distance',distance);
+          
+          //setting CITIBIKE marker image 
+          $scope.image = function () {
+            if (rack.free/(rack.bikes + rack.free) >=.90) {
+              $scope.map.markerImg = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png'
+            }
+            else if (rack.free/(rack.bikes + rack.free)>=.51 && rack.free/(rack.bikes + rack.free)<=.89) {
+              $scope.map.markerImg = "https://s3.amazonaws.com/fullstackacademy/img/marker_75.png"
+            }
+            else if (rack.free/(rack.bikes + rack.free)>=.25 && rack.free/(rack.bikes + rack.free)<=.50) {
+              $scope.map.markerImg = "https://s3.amazonaws.com/fullstackacademy/img/marker_50.png"
+            }
+            else {$scope.map.markerImg = "https://s3.amazonaws.com/fullstackacademy/img/marker_0.png" }
+          }
 
-          if (distance < 500) {
+          $scope.image()
+           if (distance < 1000) {
               marker = new google.maps.Marker({
               position: rackLoc,
               map: map,
@@ -50,9 +79,8 @@ angular.module('MeetlyApp.map', [])
             });
 
             $scope.map.markersArray.push(marker)
-            console.log('inside addMarker',$scope.map.markersArray)
            
-           }
+            }
         });
 
       })
@@ -63,27 +91,17 @@ angular.module('MeetlyApp.map', [])
      // Removes the markers from the map, but keeps them in the array.
       $scope.clearMarkers = function() {
         $scope.setMapOnAll(null);
-        console.log('inside clearMarkers',$scope.setMapOnAll(null));
+        //console.log('inside clearMarkers',$scope.setMapOnAll(null));
       }
         //sets the markers onto the page
       $scope.setMapOnAll= function(map) {
         for (var i = 0; i < $scope.map.markersArray.length; i++) {
           $scope.map.markersArray[i].setMap(map);
-          (console.log('inside setMap', $scope.map.markersArray[i]))
+          //(console.log('inside setMap', $scope.map.markersArray[i]))
         }
       }
 
-     
-
-
-
-
-
-
-
-
-
-
+  
 
     // $scope.removeMarkers = function () {
 
