@@ -20,6 +20,7 @@ angular.module('MeetlyApp', [
   'MeetlyApp.dashboard',
   'MeetlyApp.nav',
   'MeetlyApp.signout',
+  'MeetlyApp.invites',
   'MeetlyApp.services',
   'MeetlyApp.invites',
   'MeetlyApp.services',

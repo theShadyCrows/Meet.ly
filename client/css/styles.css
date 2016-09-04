@@ -249,7 +249,10 @@ article {
   border-radius: 6px;
 }
 
-
+/* Invites Page  ============================================== */
+#inviteHeader {
+  text-align: center;
+}
 
 /* MEDIA QUERIES ==================================================*/
 @media (max-width: 1000px) {
@@ -257,6 +260,8 @@ article {
     width: 48%;
   }
 }
+
+
 
 
 

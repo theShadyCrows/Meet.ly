@@ -34,7 +34,7 @@ angular.module('MeetlyApp.services', [])
 })
 
 // HANDLE ALL HTTP REQUESTS =======================================================================
-.factory('httpRequestsFactory', function($location, $http) {
+.factory('httpRequestsFactory', function($location, $http, Auth) {
 
   var postRequest = function(params) {
     console.log('params ====> ', params)
@@ -58,7 +58,10 @@ angular.module('MeetlyApp.services', [])
   var friendsList = function(friendsListObj) {
     return $http({
       method: 'GET',
-      url: '/api/friendsList'
+      url: '/api/friendsList',
+      headers: {
+          Authorization: 'Bearer '+ Auth.getToken()
+        }
     })
     .then(function (response) {
       return response.data;
