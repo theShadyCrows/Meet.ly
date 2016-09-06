@@ -22,7 +22,7 @@ var yelp = new Yelp({
 
 // }
 
-module.exports.profileRead = function(req, res) {
+// module.exports.profileRead = function(req, res) {
 
 //********* Every secured page will have to go through this check **********//
 
