@@ -1,5 +1,8 @@
 <div class="map-container" ng-controller="mapController">
+<div class = "row">
+
   <div class="invite-container">
+  <p class = "meet"> I'll Meet You Here! </p>
     <div class="invite-image">
       <a href="{{ locationDetails.url }}" target="_blank">
         <img src="{{ locationDetails.image_url }}" alt="{{ locationDetails.name }}">
@@ -45,15 +48,14 @@
   </div>
   <div id="map"></div>
 
-  <button ng-click="addMarkers()">Get Citibike locations!</button>
    <div id="floating-panel">
-
-      <button ng-click="clearMarkers()">Remove Citibike locations</button>
+  <button class='markers' ng-click="addMarkers()">Get Citibike locations!</button>
+  <button class='markers' ng-click="clearMarkers()">Remove Citibike locations</button>
 
   </div>
   <div class="invite-iframe">
-    <iframe width="600" height="400" ng-src="{{frameUrl}}"></iframe>
+    <iframe width="900" height="400" ng-src="{{frameUrl}}"></iframe>
   </div>
 
-
+</div>
 </div>
