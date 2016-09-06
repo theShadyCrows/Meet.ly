@@ -61,7 +61,7 @@ angular.module('MeetlyApp.form', [])
   $scope.checkbox = function() {    
     $scope.selectedFriendsList = [];
     angular.forEach($scope.friendsList, function(friend){
-      if (!!friend.selected) $scope.selectedFriendsList.push({ name: friend.name, email: friend.email }) ;
+      if (!!friend.selected) $scope.selectedFriendsList.push({ name: friend.name }) ;
     });
     console.log('checkbox')
     console.log($scope.selectedFriendsList)
