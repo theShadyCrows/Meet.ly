@@ -45,10 +45,8 @@ angular.module('MeetlyApp.form', [])
   $("#datetimepicker").on("dp.change", function (e) {
     var getDateTime = $('#eventDateTime').val();
     var fields = getDateTime.split(', ');
-    console.log('====> ', fields)
     $scope.eventDateTime.f_date = fields[0];
     $scope.eventDateTime.f_time = fields[1];
-    console.log('dateTime: ', $scope.eventDateTime)
   });
 
   // PULL FRIENDS LIST AND APPEND TO PAGE ===============================================
