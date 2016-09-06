@@ -34,9 +34,9 @@ module.exports.checkResults = function(req, res) {
                     
                     Results.update({eventID:res.eventID}, {status:'complete'},{multi: true}, function(err,affected){
                       console.log('affected rows', affected);
-                      Events.Results;
+                      Events.findComplete();
                     })                 
-                  } else Events.Results;
+                  } else Events.findComplete();
                   
 
                 })

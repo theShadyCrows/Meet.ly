@@ -14,6 +14,7 @@ var yelp = new Yelp({
 
 //find all results marked 'complete'
 module.exports.findComplete = function(req, res) {
+    console.log('FIND COMPLETE RUNNING')
   Results
     .find({status:'complete'})     
     .exec(function(err, result) { 

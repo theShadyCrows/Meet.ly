@@ -66,7 +66,7 @@ module.exports.register = function(req, res) {
       var token;    
       res.status(200);
     });  
-    // ResultsCtrl.checkResults();
+    ResultsCtrl.checkResults();
   }) 
 };
 

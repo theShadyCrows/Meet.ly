@@ -51,6 +51,7 @@ var geoLocator = function() {
     geoLoc.lat = parseFloat(crd.latitude);
     geoLoc.lng = parseFloat(crd.longitude);
     geoLocation = geoLoc;
+    console.log(geoLocation)
     makeRequest();
   };
 
@@ -58,7 +59,7 @@ var geoLocator = function() {
     console.warn('ERROR(' + err.code + '): ' + err.message);
   };
 
-  navigator.geolocation.getCurrentPosition(success, error, options);
+  navigator.geolocation.getCurrentPosition(success, error, options);  
 };
 
 var makeRequest = function(){
