@@ -76,6 +76,7 @@ angular.module('MeetlyApp.services', [])
   };
 
   var getMap = function() {
+    console.log('get map running')
     return $http({
       method: 'GET',
       url: '/api/mapView',

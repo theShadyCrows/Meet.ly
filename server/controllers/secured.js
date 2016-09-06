@@ -24,8 +24,6 @@ var yelp = new Yelp({
 
 module.exports.profileRead = function(req, res) {
 
-module.exports.profileRead = function(req, res) {
-
 //********* Every secured page will have to go through this check **********//
 
 //**** need to add some error handling for if payloadId provided but not found
@@ -64,16 +62,17 @@ module.exports.friendsList = function(req, res) {
 //use email to find which invites to send back
 
 module.exports.invites = function(req, res) {
+
+  console.log('invites running')
     User
       .find({})
       .where('_id').equals(req.payload._id)
-      .exec(function(err, user) {      
+      .exec(function(err, user) {       
         Invite
         .find({friends:user[0].name})//change to email      
         .exec(function(err2,user2){
           res.status(200).json(user2);
-        })
-        
+        })        
       });
 };
 
@@ -141,26 +140,24 @@ module.exports.mapView = function(req, res) {
           console.log('event found')
           console.log(event[0])
 
-      yelp.search({     
-          category_filter: event[0].category, //this will correspond to cateogry (e.g. Restaurant)          
-          term: event[0].term, // this will eventually be subcategories (e.g. Thai, Greek)        
-          location: event[0].location,
-          limit: 1,
-          sort: 2,
-          radius_filter: 600
-         })
-        .then(function (data) {
-            console.log('YELP response')
-            console.log(data)            
-            res.send(data);      
+        yelp.search({     
+            category_filter: event[0].category, //this will correspond to cateogry (e.g. Restaurant)          
+            term: event[0].term, // this will eventually be subcategories (e.g. Thai, Greek)        
+            location: event[0].location,
+            limit: 1,
+            sort: 2,
+            radius_filter: 600
+           })
+          .then(function (data) {
+              console.log('YELP response')
+              console.log(data)            
+              res.send(data);      
 
-        })
-        .catch(function (err) {
-            console.log('YELP error')
-            console.error(err);
-        });
-
-
+          })
+          .catch(function (err) {
+              console.log('YELP error')
+              console.error(err);
+          });
 
         })
     })
@@ -168,3 +165,4 @@ module.exports.mapView = function(req, res) {
 
   //send back response
 }
+
