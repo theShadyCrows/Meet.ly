@@ -5,10 +5,27 @@ body {
   font-size: 20px;
 }
 
-.clearfix:after { 
+.login {
+
+  background: url('GettyImages-516286103.jpg') fixed center no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  height: 1000px;
+  margin-top: -40px;
+  color: white;
+  opacity: 0.9;
+
+}
+
+.btn {
+border: 1px solid #00802b !important;
+border-radius: 5px !important;
+}
+.clearfix:after {
  content: " ";
- display: block; 
- height: 0; 
+ display: block;
+ height: 0;
  clear: both;
 }
 
@@ -190,8 +207,8 @@ article {
 
 /* INVITE RESULTS PAGE  ========================================== */
 .invite-container {
-  height: 170px;
-  width: 568px;
+  height: 350px;
+  width: 400px;
   border: 1px solid rgb(0,172,237);
   border-radius: 6px;
   margin-bottom: 8px;
@@ -199,8 +216,12 @@ article {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
   color: #fff;
-  background-color: #4d4dff; 
-  
+  background-color: #00802b;
+  display: inline-block;
+}
+
+.invite-iframe {
+  display: inline-block;
 }
 
 .meet {
@@ -266,6 +287,7 @@ article {
 .map-container {
   margin: 0 auto;
   width: 1000px;
+
 }
 
 #map {
@@ -276,8 +298,7 @@ article {
 }
 
 /* Invites Page  ============================================== */
-<<<<<<< HEAD
-=======
+
 #inviteHeader {
   text-align: center;
 }
@@ -295,14 +316,3 @@ article {
     width: 48%;
   }
 }
-
-#inviteHeader {
-  text-align: center;
-}
-
-
-
-
-
-
-
