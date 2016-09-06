@@ -20,6 +20,11 @@ angular.module('MeetlyApp', [
   'MeetlyApp.dashboard',
   'MeetlyApp.nav',
   'MeetlyApp.signout',
+  'MeetlyApp.invites',
+  'MeetlyApp.services',
+  'MeetlyApp.invites',
+  'MeetlyApp.services',
+  'MeetlyApp.invites',
   'MeetlyApp.services',
   'ui.router'])
 
@@ -34,8 +39,8 @@ angular.module('MeetlyApp', [
       templateUrl: 'app/views/form.html',
       authenticate: true
     })
-    .state('map-view', {      
-      url: '/map-view',
+    .state('map-view', {   
+      url:'/map-view',   
       templateUrl: 'app/views/map-view.html',
       authenticate: true
     })
@@ -60,6 +65,11 @@ angular.module('MeetlyApp', [
       templateUrl: 'app/views/signout.view.html',
       controller: 'Signout'      
     })
+    .state('invites', {
+      url: '/invites',
+      templateUrl: 'app/views/invites.view.html',
+      controller: 'Invites'      
+    })
 })
 
 .run(function ($rootScope, $location, $window, Auth, $state) {
@@ -75,24 +85,3 @@ angular.module('MeetlyApp', [
     }
   })
 })  
-
-// .run(function ($rootScope, $location, $window, Auth, $state) {
-//   console.log('run running')
-//   // Check whether the user is authenticated to navigate to a route or not on every
-//   // route change.  
-
-//   $window.addEventListener('$stateChangeStart', function(event, next, prev) {
-//     $rootScope.$apply(function() {
-//       console.log('statechange')
-//       if (!Auth.isLoggedIn() && next.authenticate) {      
-//         // Stop any defaults (such as page refreshes on form submissions)
-//         event.preventDefault();
-//         console.log('redirect to login')
-//         $location.path('/');
-//         console.log('last')
-//         // $location.path('/');
-//     }
-
-//   })
-//   })
-// })

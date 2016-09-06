@@ -9,8 +9,23 @@ angular.module('MeetlyApp.dataServices',[])
       });
     };
 
+    var getInvites = function(){
+      return $http.get('/api/invites', {
+        headers: {
+          Authorization: 'Bearer '+ Auth.getToken()
+        }
+      });      
+
+    }
+
+
+
     return {
-      getProfile : getProfile
+      getProfile : getProfile,
+      getInvites: getInvites
     };
 
 })
+
+
+//**** add function for getting Invite info *****///

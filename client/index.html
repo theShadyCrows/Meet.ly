@@ -20,8 +20,9 @@
       <nav>
         <ul>
           <li ng-hide="isLoggedIn"><a href="#/login">Sign In</a></li>
-          <li ng-show="isLoggedIn"><a href="profile">Welcome {{currentUser.name}}</a></li>
-          <li ng-show="isLoggedIn"><a href="#/invites">Invites</a></li>
+          <li ng-show="isLoggedIn"><a href="#/map-view">Welcome {{currentUser.name}}</a></li>
+          <li ng-show="isLoggedIn"><a href="#/invites">Your Invites</a></li>
+          <li ng-show="isLoggedIn"><a href="#/">Initiate Invite</a></li>
           <li ng-show="isLoggedIn"><a href="#/signout">Sign Out</a></li>
         </ul>
       </nav>
@@ -31,9 +32,9 @@
   <div ui-view class="body-wrapper"></div>
 
   <!-- SCRIPTS -->
-  <!-- <script src="vendors/jquery/min/jquery-3.1.0.min.js"></script> -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!-- <script async defer src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+  <script src="vendors/jquery/min/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script async defer src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="vendors/bootstrap-datetime/moment.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="vendors/bootstrap-datetime/bootstrap-datetimepicker.js"></script>
@@ -55,6 +56,7 @@
   <script src="app/controllers/login.controller.js"></script>
   <script src="app/controllers/dashboard.controller.js"></script>
   <script src="app/controllers/nav.controller.js"></script>
+  <script src="app/controllers/invites.controller.js"></script>
   <script src="app/app.js"></script>
   
 </body>
@@ -67,8 +69,8 @@
 
 
 
-
-<!--   <header class="top-area" ng-controller="Nav">
+<!-- 
+  <header class="top-area" ng-controller="Nav">
     <h1>Meet.ly</h1>
 
     <ul class="nav navbar-nav navbar-right">
@@ -92,9 +94,20 @@
 
   <script src="js/main.js"></script>
   <script src="app/services/services.js"></script>
+<<<<<<< HEAD
+<<<<<<< 40e487260714524e146552b5973f3b33a9c4a33c
+<<<<<<< ad8d6ad1f5d6058912c126625717befe72610c88
+=======
+<<<<<<< 7bc462bdc96631c5c198b752e0f2bbb3d2c306eb
+>>>>>>> conflicts resolved
+=======
+<<<<<<< 7bc462bdc96631c5c198b752e0f2bbb3d2c306eb
+>>>>>>> 0904
   <script src="app/controllers/yelpController.js"></script>
   <script src="app/controllers/mapController.js"></script>
   <script src="app/controllers/formController.js"></script>
+=======
+>>>>>>> invites being created
   <script src="app/services/authentication.service.js"></script>
   <script src="app/services/data.service.js"></script>
   <script src="app/controllers/register.controller.js"></script>
@@ -102,6 +115,58 @@
   <script src="app/controllers/login.controller.js"></script>
   <script src="app/controllers/dashboard.controller.js"></script>
   <script src="app/controllers/nav.controller.js"></script>
+<<<<<<< HEAD
+<<<<<<< 2f0be8ed9026c41c6cecf9902781da230de1e4da
+<<<<<<< 0b2b639bebf39715f12773a64ca5bb99c7b40cd5
+<<<<<<< cfc493919112af975bfbf00c814fc708ef8a100b
+<<<<<<< 4d663bcac76cecdbdf6a3c7ab2062913e4a976c3
+=======
+  <script src="app/controllers/invites.controller.js"></script>
+<<<<<<< ad8d6ad1f5d6058912c126625717befe72610c88
+
+>>>>>>> invite view and controller created
+=======
+>>>>>>> invites being created
+=======
+  <script src="app/controllers/invites.controller.js"></script>
+>>>>>>> invite view and controller created
+=======
+=======
+<<<<<<< 8bfd11a369f3c6b8e90df43fb793ed0c1a07a955
+>>>>>>> conflicst fixed
+=======
+<<<<<<< HEAD
+<<<<<<< 8bfd11a369f3c6b8e90df43fb793ed0c1a07a955
+>>>>>>> 0904
+<<<<<<< 3f425aec549936acae4de9c520a86dbbc17e1905
+=======
+  <script src="app/controllers/invites.controller.js"></script>
+<<<<<<< 7bc462bdc96631c5c198b752e0f2bbb3d2c306eb
+
+>>>>>>> invite view and controller created
+<<<<<<< HEAD
+<<<<<<< 40e487260714524e146552b5973f3b33a9c4a33c
+>>>>>>> conflicts resolved
+=======
+=======
+>>>>>>> invites being created
+<<<<<<< 2f0be8ed9026c41c6cecf9902781da230de1e4da
+>>>>>>> conflicts resolved
+=======
+=======
+  <script src="app/controllers/invites.controller.js"></script>
+>>>>>>> invite view and controller created
+>>>>>>> conflicst fixed
+=======
+=======
+>>>>>>> invites being created
+=======
+  <script src="app/controllers/invites.controller.js"></script>
+>>>>>>> invite view and controller created
+=======
+  <script src="app/controllers/invites.controller.js"></script>
+>>>>>>> 0902prt2
+>>>>>>> 0904
   <script src="app/app.js"></script>
 
 </body>
