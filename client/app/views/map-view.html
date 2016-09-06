@@ -1,7 +1,7 @@
 <div class="map-container" ng-controller="mapController">
-<div class = "row">
 
-  <div class="invite-container">
+<div class="top-container clearfix" style="width: 900px;">
+  <div class="invite-container" style="float:left; vertical-align: top; width: 48%; height: 400px">
   <p class = "meet"> I'll Meet You Here! </p>
     <div class="invite-image">
       <a href="{{ locationDetails.url }}" target="_blank">
@@ -46,6 +46,11 @@
       </ul> -->
     </div>
   </div>
+  <div class="invite-iframe" style="float:right; vertical-align: top; width: 50%">
+    <iframe width="450" height="400" ng-src="{{frameUrl}}"></iframe>
+  </div>
+</div>
+
   <div id="map"></div>
 
    <div id="floating-panel">
@@ -53,9 +58,7 @@
   <button class='markers' ng-click="clearMarkers()">Remove Citibike locations</button>
 
   </div>
-  <div class="invite-iframe">
-    <iframe width="900" height="400" ng-src="{{frameUrl}}"></iframe>
-  </div>
 
-</div>
+
+
 </div>
