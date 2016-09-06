@@ -21,10 +21,19 @@ var inviteSchema = new mongoose.Schema({
 //   this.friends = splitArray;
 // };
 
+// inviteSchema.methods.setFriends = function(friendsOrig){
+//   var result = [];
+//   _.each(friendsOrig[0], function(val,key){  
+//     if(val) result.push(key);  
+//     })
+//   this.friends = result;  
+
+//   }
+
 inviteSchema.methods.setFriends = function(friendsOrig){
   var result = [];
-  _.each(friendsOrig[0], function(val,key){  
-    if(val) result.push(key);  
+  _.each(friendsOrig, function(val,key){      
+    result.push(val.name);  
     })
   this.friends = result;  
 

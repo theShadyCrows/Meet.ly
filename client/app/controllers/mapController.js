@@ -61,10 +61,11 @@ var geoLocator = function() {
 };
 
 var makeRequest = function(){
+  console.log("makeRequest running")
   httpRequestsFactory.getMap()
     .then (function(preParseData){
       var preParseData = preParseData;
-      geoLocator();
+      // geoLocator();
       // var geoLocation = storeData.get('geoLocation');
       console.log('GEOLOCATION')
       console.log(storeData.get('geoLocation'))
@@ -73,11 +74,11 @@ var makeRequest = function(){
       $scope.map = {};
       $scope.map.marker;
       $scope.map.markersArray = [];
-      $scope.map.markerImgArr = 
-      ['https://s3.amazonaws.com/fullstackacademy/img/marker_100.png',
-      "https://s3.amazonaws.com/fullstackacademy/img/marker_75.png", 
-      "https://s3.amazonaws.com/fullstackacademy/img/marker_50.png",
-      "https://s3.amazonaws.com/fullstackacademy/img/marker_0.png"];  
+      // $scope.map.markerImgArr = 
+      // ['https://s3.amazonaws.com/fullstackacademy/img/marker_100.png',
+      // "https://s3.amazonaws.com/fullstackacademy/img/marker_75.png", 
+      // "https://s3.amazonaws.com/fullstackacademy/img/marker_50.png",
+      // "https://s3.amazonaws.com/fullstackacademy/img/marker_0.png"];  
       $scope.map.destinationLatLng;
       $scope.map.markerImg;
 
@@ -87,6 +88,7 @@ var makeRequest = function(){
   // START: INIT MAP
 
   var initMap = function() {
+    console.log('INITMAP RUNNING')
     // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;

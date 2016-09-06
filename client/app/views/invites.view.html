@@ -7,29 +7,6 @@
 //time
 //location -->
 
-<<<<<<< HEAD
-<article class="form-area">
-  <h2 id = "inviteHeader"> HEADER </h2>
-  <h2 id = "inviteHeader"> {{invite.eventName}} </h2>
-
-    <div class="form-left">
-
-        <h3>Category</label>
-        <h3>{{invite.category}}</label>
-
-        <!-- Select from type list
-        Todo: allow priority ranking -->
-
-        <!-- add ng repeat and checkboxes -->
-        <input type="text" name="input" value="{{inputType}}" class="cat-type-box" ng-model="inputType" placeholder="Category Type">
-        
-
-        <!-- START: location -->
-        <input class="location-box" type="text" name="location" ng-model="inputLocation" placeholder="Location">
-        <!-- END: location -->
-
-        <div>DATE & TIME</div>
-=======
 <article class="form-area">  
   <h1 id = "inviteHeader"> Event: "{{invite.eventName}}" </h1>
 
@@ -38,7 +15,6 @@
         <h3>Meeting for: <div class = "detail">{{invite.category}} </div></h3>      
 
         <h3>DATE & TIME</h3>
->>>>>>> 0904
         <!-- START: calendar -->
         <!-- https://jqueryui.com/datepicker/ -->
         <input type="text" name="selectInviteDate" value="" id="datepicker" ng-model="selectDate" placeholder="Invite Date">
@@ -51,32 +27,20 @@
         
         <!-- START: select time -->
         <input type="text" name="" ng-model="inputTime" placeholder="Time">
-<<<<<<< HEAD
-        <!-- END: select time -->
-=======
         <!-- END: select time -->        
 
         <!-- START: location -->
         <h4> Where you'll be: <h4>
         <input class="location-box" type="text" name="location" ng-model="location" placeholder="e.g. 1216 Broadway, NYC">
-        <!-- END: location -->
-
-        
->>>>>>> 0904
+        <!-- END: location -->        
 
     </div>
 
     <div class="form-right">
-<<<<<<< HEAD
-        
-        <!-- START: submit form button -->
-        <!-- <button ng-click="submitForm({place: {f_category: selectedCat, f_type: inputType, f_location: inputLocation}, dateTime: {f_date: selectDate, f_time: inputTime}, f_friends: [friendsInvite]})">INVITE!</button> -->
-        <button ng-click="submitForm({f_name: 'My Invite!', place: {f_category: 'Food', f_type: 'Mexican', f_location: '10001' }, dateTime: {f_date: '09/03/2016', f_time: '5:00pm'}, f_friends: [friendsInvite]})">INVITE!</button>
-=======
   
     <!-- Select from type list
   Todo: allow priority ranking -->
-      <div class="form-right">
+      
         <h4> Choose a type </h4>
         <div id="friends-container">
           <div ng-repeat="type in invite.type">
@@ -84,7 +48,7 @@
           </div>
 
         </div>
-      </div>
+      
 
 
         
@@ -94,7 +58,7 @@
         <!-- <button ng-click="submitForm({f_name: 'My Invite!', place: {f_category: 'Food', f_type: 'Mexican', f_location: '10001' }, dateTime: {f_date: '09/03/2016', f_time: '5:00pm'}, f_friends: [friendsInvite]})">INVITE!</button> -->
   
         <button ng-click="submitForm({f_name: invite.eventName, f_eventID:invite._id,  place: {f_category: invite.category, f_type: selectedTypes.selected, f_location: location}, dateTime: {f_date: eventDate, f_time: eventTime}, f_friends: invite.friends})">SUBMIT!</button>    
->>>>>>> 0904
+
 
         <!-- END: submit form button -->
     </div>
