@@ -1,22 +1,38 @@
 angular.module('MeetlyApp.invites', [])
 .controller('Invites', function($scope, $location, Data, validateFormFactory, httpRequestsFactory, storeData){
-  $scope.invite = {
-    
-  };
+  $scope.invite = {};  
   $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
+
 
 //****** CHANGE below to get invite data *******//
 //probably very similar. difference is gonna be on 
 //server side
   Data.getInvites()
-    .success(function(data){
-      $scope.invite = data;
+    .success(function(data){     
+      $scope.invite = data[0]; //just use first invite for now
     })
     .error(function(error){
       console.log(error);
     });
 
+  $scope.submitForm = function(formSubmissionObj) {
+    console.log('submitFrom data:')
+    console.log(formSubmissionObj);
+
+    httpRequestsFactory.postReqEvent(formSubmissionObj) //should validate this info first
+  };
+
+  $scope.selectedTypes = {
+      selected:{}
+  };
+
+   $scope.toggleCheckbox = function(friend) {
+    console.log('selected: ', $scope.selectedTypes)
+  }
+
 })
+
+
 
  // // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
  //  $scope.submitForm = function(formSubmissionObj) {

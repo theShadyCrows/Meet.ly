@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Invite = mongoose.model('Invite');
+var Results = mongoose.model('Results');
+var ResultsCtrl = require('./results.js');
 // var findName = function(payloadID){
 //     User
 //     .findById(payloadID)
@@ -32,20 +34,16 @@ module.exports.profileRead = function(req, res) {
 
 module.exports.friendsList = function(req, res) {
 
-//Need to add conditional for not sending back own username
 //Need to send back array without hashes 
     User
-      .find({})
-      .where('_id').ne(req.payload._id)
-      // .where('email').ne(req.body.user)
+      .find({})    
+      .where('_id').ne(req.payload._id)      
       .exec(function(err, user) {
-        console.log('found');
-        // console.log(user[0].name)  
-        console.log(user);      
         res.status(200).json(user);
       });
 
 };
+
 
 
 //****** add Invite method *******//
@@ -54,16 +52,66 @@ module.exports.friendsList = function(req, res) {
 //use email to find which invites to send back
 
 module.exports.invites = function(req, res) {
-    Invite
+    User
       .find({})
-      .where('_id').equals(req.payload._id) //change to find by email
-      // .where('email').ne(req.body.user)
-      .exec(function(err, user) {
-        console.log('found');        
-        // console.log(user[0].name)  
-        console.log(user);      
-        res.status(200).json(user);
+      .where('_id').equals(req.payload._id)
+      .exec(function(err, user) {      
+        Invite
+        .find({friends:user[0].name})//change to email      
+        .exec(function(err2,user2){
+          res.status(200).json(user2);
+        })
+        
       });
+};
+
+module.exports.insertResult = function(req, res) {
+
+//update invite to take user off friends list
+    // User
+    //   .find({})
+    //   .where('_id').equals(req.payload._id)
+    //   .exec(function(err, user) {      
+    //     Invite
+    //     .find({friends:user[0].name})//change to email      
+    //     .exec(function(err2,user2){
+    //       console.log(user2)
+    //       res.status(200).json(user2);
+    //     })
+        
+    //   });
+
+    User
+      .find({})
+      .where('_id').equals(req.payload._id)
+      .exec(function(err, user) {       
+        var results = new Results();
+
+        results.eventName = req.body.f_name;
+        results.date = req.body.place.dateTime;        
+        
+        results.location = req.body.place.f_location;
+        results.category = req.body.place.f_category;        
+        results.user = user[0].name;
+        results.eventID = req.body.f_eventID;
+        results.friends = req.body.f_friends;
+        
+        results.setType(req.body.place.f_type);
+
+        results.save(function(err) {
+          var token;    
+          res.status(200);
+        });  
+        ResultsCtrl.checkResults();
+      }) 
+
+      
+  
+//******** check if any invites finished
+//if so, find averages, send YELP, and populate
+// Events page :) 
+
+
 
 };
 

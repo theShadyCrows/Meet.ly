@@ -254,6 +254,12 @@ article {
   text-align: center;
 }
 
+.detail{
+  display: inline;
+  font-weight: bold;
+  font-size: 30px;
+}
+
 /* MEDIA QUERIES ==================================================*/
 @media (max-width: 1000px) {
   .form-left, .form-right {

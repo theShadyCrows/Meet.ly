@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
+var User = mongoose.model('User');
 var Invite = mongoose.model('Invite');
+
 
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
@@ -7,6 +9,9 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.register = function(req, res) {
+  //Note: not receiving email for users. we need 
+  //to eventually use email instead of name because names
+  //are not unique
 
   // if(!req.body.name || !req.body.email || !req.body.password) {
   //   sendJSONresponse(res, 400, {
@@ -17,9 +22,11 @@ module.exports.register = function(req, res) {
 
 ////////*** Need to add validation of form data
 
+  console.log('req')
+  console.log(req.body)
   var invite = new Invite();
 
-  // invite.eventName = req.body.name;
+  invite.eventName = req.body.f_name;
   invite.date = req.body.place.dateTime,
   // invite.time = 
   invite.location = req.body.place.f_location;
@@ -36,3 +43,4 @@ module.exports.register = function(req, res) {
   });
 
 };
+

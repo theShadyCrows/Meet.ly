@@ -51,6 +51,7 @@ var auth = jwt({
 });
 
 // secured pages
+router.post("/results", auth, ctrlSecured.insertResult)
 router.get('/dashboard', auth, ctrlSecured.profileRead);
 router.get('/friendsList', auth, ctrlSecured.friendsList);
 router.get('/invites', auth, ctrlSecured.invites);
