@@ -98,7 +98,7 @@ angular.module('MeetlyApp.services', [])
   var getCitiBikeLocations = function () {
     return $http({
       method: 'GET',
-      url: 'http://api.citybik.es/citi-bike-nyc.json'
+      url: 'https://api.citybik.es/citi-bike-nyc.json'
     });
   };
 
