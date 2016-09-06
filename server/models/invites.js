@@ -1,4 +1,5 @@
 var mongoose = require( 'mongoose' );
+var _ = require('underscore');
 
 var inviteSchema = new mongoose.Schema({
   status: {
@@ -14,18 +15,26 @@ var inviteSchema = new mongoose.Schema({
   friends: Array //this should be changed to emails
 });
 
+// inviteSchema.methods.setFriends = function(friendsOrig){
+//   var string = friendsOrig[0]; 
+//   var splitArray = string.split(',');  
+//   this.friends = splitArray;
+// };
+
 inviteSchema.methods.setFriends = function(friendsOrig){
-  var string = friendsOrig[0]; 
-  var splitArray = string.split(',');  
-  this.friends = splitArray;
-};
+  var result = [];
+  _.each(friendsOrig[0], function(val,key){  
+    if(val) result.push(key);  
+    })
+  this.friends = result;  
+
+  }
 
 inviteSchema.methods.setType = function(typeOrig){
-  var typeArray = type.split(',').map(function(item){
+  var typeArray = typeOrig.split(',').map(function(item){
     return item.trim();
   })
   this.type = typeArray
 }
-
 
 mongoose.model('Invite', inviteSchema);

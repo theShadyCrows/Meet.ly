@@ -20,6 +20,9 @@ angular.module('MeetlyApp', [
   'MeetlyApp.dashboard',
   'MeetlyApp.nav',
   'MeetlyApp.signout',
+  'MeetlyApp.invites',
+  'MeetlyApp.services',
+  'MeetlyApp.invites',
   'MeetlyApp.services',
   'MeetlyApp.invites',
   'MeetlyApp.services',
@@ -36,7 +39,8 @@ angular.module('MeetlyApp', [
       templateUrl: 'app/views/form.html',
       authenticate: true
     })
-    .state('map-view', {      
+    .state('map-view', {   
+      url:'/map-view',   
       templateUrl: 'app/views/map-view.html',
       authenticate: true
     })
@@ -66,7 +70,6 @@ angular.module('MeetlyApp', [
       templateUrl: 'app/views/invites.view.html',
       controller: 'Invites'      
     })
-
 })
 
 .run(function ($rootScope, $location, $window, Auth, $state) {
