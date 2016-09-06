@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Invite = mongoose.model('Invite');
 var Results = mongoose.model('Results');
-var Events = require('./events.js')
+var Events = require('./events.js');
 var _ = require('underscore');
 
 

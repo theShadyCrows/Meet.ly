@@ -2,7 +2,17 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Invite = mongoose.model('Invite');
 var Results = mongoose.model('Results');
+var Event = mongoose.model('Event');
 var ResultsCtrl = require('./results.js');
+
+var request = require('request');
+var Yelp = require('yelp');
+var yelp = new Yelp({
+    consumer_key: 'ZZd9nkRObqyUruNcyW_U-Q',
+    consumer_secret: 'yXYdTu1alsTgKyzCCntLqV83sZY',
+    token: 'MxzzUU3nyH6whuUH_ugISQW69jjsubCP',
+    token_secret: 'MiI3lxjFjLCIGnYWr9w0bS3dpP4',
+});
 // var findName = function(payloadID){
 //     User
 //     .findById(payloadID)
@@ -111,9 +121,52 @@ module.exports.insertResult = function(req, res) {
 //if so, find averages, send YELP, and populate
 // Events page :) 
 
-
-
 };
+
+
+module.exports.mapView = function(req, res) {
+  //find events with user's id
+  User
+    .find({})
+    .where('_id').equals(req.payload._id)
+    .exec(function(err, user) {
+      var name = user[0].name  
+      console.log(name)
+      Event
+        .find({status:'active'})
+        .where('status').equals('active')
+        .exec(function(err,event){
+          console.log('event found')
+          console.log(event[0])
+
+      yelp.search({     
+          category_filter: event[0].category, //this will correspond to cateogry (e.g. Restaurant)          
+          term: event[0].term, // this will eventually be subcategories (e.g. Thai, Greek)        
+          location: event[0].location,
+          limit: 1,
+          sort: 2,
+          radius_filter: 600
+         })
+        .then(function (data) {
+            console.log('YELP response')
+            console.log(data)            
+            res.send(data);      
+
+        })
+        .catch(function (err) {
+            console.log('YELP error')
+            console.error(err);
+        });
+
+
+
+        })
+    })
+  //make yelp request
+
+  //send back response
+}
+
 
 
 

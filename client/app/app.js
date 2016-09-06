@@ -37,7 +37,8 @@ angular.module('MeetlyApp', [
       templateUrl: 'app/views/form.html',
       authenticate: true
     })
-    .state('map-view', {      
+    .state('map-view', {   
+      url:'/map-view',   
       templateUrl: 'app/views/map-view.html',
       authenticate: true
     })

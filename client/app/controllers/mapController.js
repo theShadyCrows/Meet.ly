@@ -2,30 +2,84 @@
 angular.module('MeetlyApp.map', [])
 
 .controller('mapController', function($scope, httpRequestsFactory, storeData, citibikeFactory, $sce) {
+    // console.log('INIT RUNNING')
+    // httpRequestsFactory.getMap()
+    //   .then(function (searchResults) {
+    //     // $scope.data.results = searchResults;
+    //     // STORE DATA
+    //     storeData.set('apiResults', searchResults);
+    //     // REDIRECT TO RESULTS PAGE
+    //     // $location.path('/map-view');
+    //   })
+    //   .catch(function (error) {
+    //     console.error(error);
+    //   });
+
+
+
   // GET DATA & SET VARIABLES
-  var preParseData = storeData.get('apiResults');
-  var geoLocation = storeData.get('geoLocation');
+  // var preParseData = storeData.get('apiResults');
+
+
+  // var geoLocation = storeData.get('geoLocation');
 
   // PARSE OBJECT DATA FOR LOCATION DETAILS AREA
-  $scope.locationDetails = preParseData.businesses[0];
-  $scope.frameUrl = $sce.trustAsResourceUrl($scope.locationDetails.url)
+  // $scope.locationDetails = preParseData.businesses[0];
+  // $scope.frameUrl = $scope.trustAsResourceUrl($scope.locationDetails.url)
 
   // GOOGLE MAPS API  =============================================================================
   // SET VARIABLES
 
+  // $scope.map = {};
+  // $scope.map.marker;
+  // $scope.map.markersArray = [];
+  // $scope.map.destinationLatLng;
+  // $scope.map.markerImg;
 
+var geoLocator = function() {
+  console.log('GEOLOCATOR RUNNING')
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
 
+  var geoLoc = {};
 
+  function success(pos) {
+    var crd = pos.coords;
+    geoLoc.lat = parseFloat(crd.latitude);
+    geoLoc.lng = parseFloat(crd.longitude);
+    geoLocation = geoLoc;
+    makeRequest();
+  };
 
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
 
+  navigator.geolocation.getCurrentPosition(success, error, options);
+};
 
+var makeRequest = function(){
+  httpRequestsFactory.getMap()
+    .then (function(preParseData){
+      var preParseData = preParseData;
+      geoLocator();
+      // var geoLocation = storeData.get('geoLocation');
+      console.log('GEOLOCATION')
+      console.log(storeData.get('geoLocation'))
+      $scope.locationDetails = preParseData.businesses[0];
+      $scope.frameUrl = $sce.trustAsResourceUrl($scope.locationDetails.url)
+      $scope.map = {};
+      $scope.map.marker;
+      $scope.map.markersArray = [];
+      $scope.map.destinationLatLng;
+      $scope.map.markerImg;
 
-  $scope.map = {};
-  $scope.map.marker;
-  $scope.map.markersArray = [];
-  $scope.map.destinationLatLng;
-  $scope.map.markerImg;
-
+      initMap();
+    })
+}
   // START: INIT MAP
 
 
@@ -122,6 +176,9 @@ angular.module('MeetlyApp.map', [])
 
 
   };
+
+geoLocator();
+
   // END: INIT MAP
 
   // START: CALCULATE AND DISPLAY ROUTE
@@ -323,6 +380,6 @@ angular.module('MeetlyApp.map', [])
   // ====================================================================================
 
   // INVOKE FUNCTIONS
-  initMap();    // GOOGLE MAPS
+  // initMap();    // GOOGLE MAPS
 
 });

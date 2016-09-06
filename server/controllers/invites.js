@@ -26,8 +26,6 @@ module.exports.register = function(req, res) {
 
 ////////*** Need to add validation of form data
 
-  console.log('req')
-  console.log(req.body)
   var invite = new Invite();
 
   invite.eventName = req.body.f_name;

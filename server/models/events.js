@@ -15,4 +15,6 @@ var eventSchema = new mongoose.Schema({
   friends: Array //this should be changed to emails
 });
 
+
+
 mongoose.model('Event', eventSchema);

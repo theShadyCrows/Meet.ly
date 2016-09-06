@@ -75,6 +75,25 @@ angular.module('MeetlyApp.services', [])
     });
   };
 
+  var getMap = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/mapView',
+      headers: {
+          Authorization: 'Bearer '+ Auth.getToken()
+        }
+    })
+    .then(function (response) {
+      console.log('GET MAP RESPONSE')
+      console.log(response)    
+      return response.data;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+    
+  };
+
 
   // ======================================================
   // TO DO: GET AND POST REQUEST FOR FRIENDS LIST
@@ -99,6 +118,7 @@ angular.module('MeetlyApp.services', [])
   return {
     postRequest: postRequest,
     postReqEvent: postReqEvent,
+    getMap: getMap,
     friendsList: friendsList
   }
 })
