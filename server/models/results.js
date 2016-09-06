@@ -34,5 +34,12 @@ resultsSchema.methods.setType = function(typeOrig){
   this.type = result;
 }
 
+resultsSchema.methods.setType2 = function(typeOrig){
+  var typeArray = typeOrig.split(',').map(function(item){
+    return item.trim();
+  })
+  this.type = typeArray.splice(0,1);
+}
+
 mongoose.model('Results', resultsSchema);
 

@@ -13,7 +13,7 @@ var yelp = new Yelp({
   token_secret: 'MiI3lxjFjLCIGnYWr9w0bS3dpP4',
 });
 
-router.post("/yelpAPI", ctrlInv.register)
+// router.post("/yelpAPI", ctrlInv.register)
 
 // router.post("/yelpAPI", function(req, res) {    
 //   console.log('yelpAPI request handler')
@@ -51,6 +51,7 @@ var auth = jwt({
 });
 
 // secured pages
+router.post("/yelpAPI", auth, ctrlInv.register)
 router.post("/results", auth, ctrlSecured.insertResult)
 router.get('/dashboard', auth, ctrlSecured.profileRead);
 router.get('/friendsList', auth, ctrlSecured.friendsList);

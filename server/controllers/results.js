@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Invite = mongoose.model('Invite');
 var Results = mongoose.model('Results');
+var Events = require('./events.js')
 var _ = require('underscore');
 
 
@@ -23,27 +24,24 @@ module.exports.checkResults = function(req, res) {
               Results
                 .find({eventID:res.eventID})
                 .exec(function(err2,result2){
-                  console.log('reached result2')                  
+                  // console.log('reached result2')                  
                   numberInvited = result2[0].friends.length;
                   numberOfInvites = result2.length;
-                  console.log('numberInvited', numberInvited)
-                  console.log('numberOfInvites', numberOfInvites)
+                  // console.log('numberInvited', numberInvited)
+                  // console.log('numberOfInvites', numberOfInvites)
                   if(numberInvited <= numberOfInvites){
-                    console.log('updating', res.eventID)
-                    // _.each(result2, function(res2){
-                    //   console.log('eachloop')
-                    //   res2.status = 'completed';
-                    //   res2.save;
-                    // })
+                    // console.log('updating', res.eventID)
                     
                     Results.update({eventID:res.eventID}, {status:'complete'},{multi: true}, function(err,affected){
                       console.log('affected rows', affected);
+                      Events.Results;
                     })                 
-                  }
+                  } else Events.Results;
+                  
+
                 })
               checked.push(res._id)
             }
           })
         })
-
 }

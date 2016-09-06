@@ -41,7 +41,10 @@ angular.module('MeetlyApp.services', [])
     return $http({
       method: 'POST',
       url: '/api/yelpAPI',
-      data: params
+      data: params,
+      headers: {
+          Authorization: 'Bearer '+ Auth.getToken()
+        }
     })
     .then(function (response) {
       return response.data;
