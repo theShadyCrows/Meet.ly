@@ -14,31 +14,24 @@
     <!-- <input type="text" value="" ng-model="eventDate" placeholder="Date">
     <input type="text" value="" ng-model="eventTime" placeholder="Time"> -->
     <div class="form-group">
-      <div class='input-group date' id='datetimepicker1'>
-        <input type='text' class="form-control" ng-model="eventDateTime" placeholder="Invite Date & Time">
+      <div class='input-group date' id='datetimepicker'>
+        <input type='text' class="form-control" id="eventDateTime" placeholder="Invite Date & Time" data-format="yyyy-MM-dd hh:mm:ss">
           <span class="input-group-addon">
           <span class="glyphicon glyphicon-calendar"></span>
         </span>
       </div>
     </div>
-    <script type="text/javascript">
-      $(function () {
-        $('#datetimepicker1').datetimepicker();
-      });
-    </script>
-
-  </div> 
+  </div>
 
   <div class="form-right">
     <label for="label">FRIENDS</label>
     <div id="friends-container">
       <div ng-repeat="friend in friendsList">
-        <input type="checkbox" value="{{friend.name}}" ng-model="selectedFriends.selected[friend.name]" ng-change="toggleCheckbox()"> {{friend.name}} (email: {{friend.email}})
+        <input type="checkbox" value="{{friend}}" ng-model="friend.selected" ng-change="checkbox()"> {{friend.name}}<br>email: {{friend.email}}
       </div>
-
     </div>
     <input type="text" value="" ng-model="addFriend" placeholder="Add friend">
     
-    <button ng-click="submitForm({f_name: inviteName, place: {f_category: selectedCategory.name, f_type: categoryType, f_location: location}, dateTime: {f_date: eventDate, f_time: eventTime}, f_friends: [selectedFriends.selected]})">INVITE!</button>
+    <button ng-click="submitForm({f_name: inviteName, place: {f_category: selectedCategory.name, f_type: categoryType, f_location: location}, dateTime: eventDateTime, f_friends: selectedFriendsList })">INVITE!</button>
   </div>
 </article>

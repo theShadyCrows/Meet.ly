@@ -35,31 +35,41 @@ angular.module('MeetlyApp.form', [])
 
   $scope.selectedCategory = $scope.categoryData[0];
 
+  // GET EVENT DATE AND TIME ============================================================
+  $scope.eventDateTime = {};
+
+  $('#datetimepicker').datetimepicker({
+    format: 'MM-DD-YYYY, hh:mm A'
+  });
+
+  $("#datetimepicker").on("dp.change", function (e) {
+    var getDateTime = $('#eventDateTime').val();
+    var fields = getDateTime.split(', ');
+    console.log('====> ', fields)
+    $scope.eventDateTime.f_date = fields[0];
+    $scope.eventDateTime.f_time = fields[1];
+    console.log('dateTime: ', $scope.eventDateTime)
+  });
+
   // PULL FRIENDS LIST AND APPEND TO PAGE ===============================================
   httpRequestsFactory.friendsList()
   .then(function (friends) {
     $scope.friendsList = friends;
-    console.log('friends: ', $scope.friendsList)
   })
   .catch(function (error) {
     console.error(error);
   });
 
-  // CREATE CHECKBOX FOR FRIENDS LIST ====================================================
-  $scope.selectedFriends = {
-      selected:{}
-  };
-
-  $scope.toggleCheckbox = function(friend) {
-    console.log('selected: ', $scope.selectedFriends)
+  $scope.checkbox = function() {
+    $scope.selectedFriendsList = [];
+    angular.forEach($scope.friendsList, function(friend){
+      if (!!friend.selected) $scope.selectedFriendsList.push({ name: friend.name, email: friend.email }) ;
+    });
   }
-
-  // $scope.selectedCat = '-- Select Category --';   // DEFAULT CATEGORY
 
   // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
   $scope.submitForm = function(formSubmissionObj) {
     $scope.postRequest = validateFormFactory.toValidate(formSubmissionObj);
-    console.log('submitted form data: ', $scope.postRequest);
     
     if ($scope.postRequest) {
       // DATA IS VALID AND CAN CALL YELP API POST REQUEST
