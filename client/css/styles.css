@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 20px;
 }
 
@@ -192,12 +192,23 @@ article {
 
 /* INVITE RESULTS PAGE  ========================================== */
 .invite-container {
-  height: 100px;
+  height: 170px;
   width: 568px;
-  border: 1px solid black;
+  border: 1px solid rgb(0,172,237);
   border-radius: 6px;
   margin-bottom: 8px;
   padding: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4d4dff; 
+  
+}
+
+.meet {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+
 }
 
 .invite-container .invite-image {
@@ -206,6 +217,9 @@ article {
 
 .invite-image img {
   border-radius: 6px;
+  height: 110px;
+  width: 110px;
+  margin-bottom: 10px
 }
 
 .invite-container .invite-details {
@@ -221,17 +235,31 @@ article {
 }
 
 .invite-details ul li{
-  padding-bottom: 8px;
+  padding-bottom: 1px;
 }
 
 .invite-details .location-name {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
+  font-family:  'Raleway';
 }
 
 .invite-details .location-name a {
   text-decoration: none;
-  color: blue;
+  font-size: 26px;
+  font-weight: bold;
+  color:white;
+  font-family:  'Raleway';
+}
+
+.markers {
+    display: block;
+    margin: 8px 8px 5px 5px;
+    background-color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Raleway';
+    border: 2px solid rgb(0,172,237);
 }
 
 
@@ -239,12 +267,12 @@ article {
 /* GOOGLE MAPS API  ============================================== */
 .map-container {
   margin: 0 auto;
-  width: 602px;
+  width: 1000px;
 }
 
 #map {
-  height: 300px;
-  width: 600px;
+  height: 400px;
+  width: 900px;
   border: 1px solid #333;
   border-radius: 6px;
 }

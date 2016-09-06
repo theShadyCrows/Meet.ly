@@ -14,20 +14,18 @@ angular.module('MeetlyApp.map', [])
   // SET VARIABLES
 
 
-
-
-
-
-
-
   $scope.map = {};
   $scope.map.marker;
   $scope.map.markersArray = [];
   $scope.map.destinationLatLng;
+  $scope.map.markerImgArr = 
+  ['https://s3.amazonaws.com/fullstackacademy/img/marker_100.png',
+  "https://s3.amazonaws.com/fullstackacademy/img/marker_75.png", 
+  "https://s3.amazonaws.com/fullstackacademy/img/marker_50.png",
+  "https://s3.amazonaws.com/fullstackacademy/img/marker_0.png"];
   $scope.map.markerImg;
 
   // START: INIT MAP
-
 
   var initMap = function() {
     // GOOGLE MAPS API: AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo
@@ -54,25 +52,27 @@ angular.module('MeetlyApp.map', [])
           var locM = new google.maps.LatLng(40.7465051, -73.9904466);
           var geoLoc = new google.maps.LatLng(geoLocation.lat, geoLocation.lng);
            //console.log('GEOLOC',geoLoc.lat(),geoLoc.lng())
+           //distance between each rack location and current geolocation of user
           var distance = google.maps.geometry.spherical.computeDistanceBetween( geoLoc, rackLoc );
           //console.log('distance',distance);
 
           //setting CITIBIKE marker image
           $scope.image = function () {
             if (rack.free/(rack.bikes + rack.free) >=.90) {
-              $scope.map.markerImg = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png'
+              $scope.map.markerImg = $scope.map.markerImgArr[0];
             }
             else if (rack.free/(rack.bikes + rack.free)>=.51 && rack.free/(rack.bikes + rack.free)<=.89) {
-              $scope.map.markerImg = "https://s3.amazonaws.com/fullstackacademy/img/marker_75.png"
+              $scope.map.markerImg = $scope.map.markerImgArr[1];
             }
-            else if (rack.free/(rack.bikes + rack.free)>=.25 && rack.free/(rack.bikes + rack.free)<=.50) {
-              $scope.map.markerImg = "https://s3.amazonaws.com/fullstackacademy/img/marker_50.png"
+            else if (rack.free/(rack.bikes + rack.free)>=.20 && rack.free/(rack.bikes + rack.free)<=.50) {
+              $scope.map.markerImg = $scope.map.markerImgArr[2];
             }
-            else {$scope.map.markerImg = "https://s3.amazonaws.com/fullstackacademy/img/marker_0.png" }
+            else {$scope.map.markerImg = $scope.map.markerImgArr[3]
+            }
           }
 
           $scope.image()
-           if (distance < 1000) {
+           if (distance < 30000) {
               marker = new google.maps.Marker({
               position: rackLoc,
               map: map,
@@ -102,25 +102,6 @@ angular.module('MeetlyApp.map', [])
         }
       }
 
-
-
-    // $scope.removeMarkers = function () {
-
-    //   if ($scope.flag) {
-    //     console.log('flag',$scope.flag)
-    //     console.log('marker in REMOVE MARKERS',$scope.map.markersArray)
-    //     $scope.map.markersArray.splice(0,$scope.map.markersArray.length)
-    //         console.log('removeMarkers', $scope.map.markersArray)
-    //   }
-    // }
-
-        // $scope.visible = true;
-        // $scope.addMarkers = function () {
-        //   console.log('testtest$$$')
-        //     $scope.visible = !$scope.visible;
-        // };
-
-
   };
   // END: INIT MAP
 
@@ -147,6 +128,21 @@ angular.module('MeetlyApp.map', [])
   // END: CALCULATE AND DISPLAY ROUTE
 
 
+    // $scope.removeMarkers = function () {
+
+    //   if ($scope.flag) {
+    //     console.log('flag',$scope.flag)
+    //     console.log('marker in REMOVE MARKERS',$scope.map.markersArray)
+    //     $scope.map.markersArray.splice(0,$scope.map.markersArray.length)
+    //         console.log('removeMarkers', $scope.map.markersArray)
+    //   }
+    // }
+
+        // $scope.visible = true;
+        // $scope.addMarkers = function () {
+        //   console.log('testtest$$$')
+        //     $scope.visible = !$scope.visible;
+        // };
   // $scope.map.toggleMarkers = true;
 
   // // START: TOGGLE CITIBIKE MARKERS
@@ -178,38 +174,7 @@ angular.module('MeetlyApp.map', [])
 
   //   calculateAndDisplayRoute(directionsService, directionsDisplay);
 
-  //   // ADD CITIBIKE MARKERS
-  //   $scope.addMarkers = function() {
-  //   // GET CITIBANK LOCATIONS
-  //   citibikeFactory.getCitiBikeLocations()
-  //     .then(function(bikeRacks) {
-  //       var marker;
-  //       var markerImg = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png';
-  //       var distance = 0;
-  //       $scope.toggleMarkers = true;
-
-  //       bikeRacks.data.forEach(function(rack) {
-  //         var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
-  //         var locM = new google.maps.LatLng(40.7465051, -73.9904466);
-  //         distance = google.maps.geometry.spherical.computeDistanceBetween( $scope.destinationLatLng, rackLoc );
-
-  //         if (distance < 400) {
-  //           $scope.addMarker(rackLoc, markerImg)
-
-  //           marker = new google.maps.Marker({
-  //             position: rackLoc,
-  //             map: map,
-  //             icon: markerImg
-  //           });
-  //         }
-  //       });
-
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-  //   }
-
+  
 
   //   // Adds a marker to the map and push to the array.
   //   $scope.addMarker = function(location) {
@@ -236,58 +201,7 @@ angular.module('MeetlyApp.map', [])
   //   //   calculateAndDisplayRoute(directionsService, directionsDisplay);
   //   // });
 
-  //   // // GET CITIBANK LOCATIONS
-  //   // citibikeFactory.getCitiBikeLocations()
-  //   //   .then(function(bikeRacks) {
-  //   //     // console.log('bikeRacks ====> ', bikeRacks);
-  //   //     // $scope.data.bikes = bikeRacks.data;
-  //   //     // console.log('bikeRacks.data; ====> ', bikeRacks.data);
-  //   //     var marker;
-  //   //     var markerImg = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png';
-  //   //     var distance = 0;
-  //   //     $scope.toggleMarkers = true;
 
-  //   //     bikeRacks.data.forEach(function(rack) {
-  //   //       var rackLoc = new google.maps.LatLng(rack.lat/1000000, rack.lng/1000000);
-  //   //       var locM = new google.maps.LatLng(40.7465051, -73.9904466);
-  //   //       distance = google.maps.geometry.spherical.computeDistanceBetween( locM, rackLoc );
-
-  //   //       if (distance < 400) {
-  //   //         marker = new google.maps.Marker({
-  //   //           position: rackLoc,
-  //   //           map: map,
-  //   //           icon: markerImg
-  //   //         });
-  //   //       }
-  //   //     });
-
-  //   //   })
-  //   //   .catch(function (error) {
-  //   //     console.error(error);
-  //   //   });
-
-  //     // // citibike markers
-  //     // $scope.getData = function () {
-
-  //     //   citibikeFactory.getData()
-
-  //     //   .then(function (bikeRacks) {
-  //     //     console.log('---->',bikeRacks)
-  //     //     $scope.data.bikes = bikeRacks.data;
-
-  //     //     $scope.data.bikes.forEach(function(rack){
-  //     //       console.log('inside forEach', rack)
-  //     //       var image = 'https://s3.amazonaws.com/fullstackacademy/img/marker_100.png';
-  //     //       var marker = new google.maps.Marker({
-  //     //           position: {lat: rack.lat/1000000, lng: rack.lng/1000000},
-  //     //           map: map,
-  //     //           icon: image
-  //     //           });
-  //     //     })
-
-  //     //   })
-
-  //     // }
 
   // };
 
