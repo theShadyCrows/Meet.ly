@@ -58,11 +58,13 @@ angular.module('MeetlyApp.form', [])
     console.error(error);
   });
 
-  $scope.checkbox = function() {
+  $scope.checkbox = function() {    
     $scope.selectedFriendsList = [];
     angular.forEach($scope.friendsList, function(friend){
-      if (!!friend.selected) $scope.selectedFriendsList.push({ name: friend.name }) ;
+      if (!!friend.selected) $scope.selectedFriendsList.push({ name: friend.name, email: friend.email }) ;
     });
+    console.log('checkbox')
+    console.log($scope.selectedFriendsList)
   }
 
   // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
@@ -85,10 +87,10 @@ angular.module('MeetlyApp.form', [])
         $scope.data.results = searchResults;
 
         // STORE DATA
-        storeData.set('apiResults', $scope.data.results);
+        // storeData.set('apiResults', $scope.data.results);
 
         // REDIRECT TO RESULTS PAGE
-        $location.path('/map-view');
+        // $location.path('/map-view');
       })
       .catch(function (error) {
         console.error(error);

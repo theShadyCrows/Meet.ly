@@ -126,19 +126,18 @@ module.exports.insertResult = function(req, res) {
 
 
 module.exports.mapView = function(req, res) {
-  //find events with user's id
+
+  console.log('===============> MAP VIEW <===================')
+  // find events with user's id
   User
     .find({})
     .where('_id').equals(req.payload._id)
     .exec(function(err, user) {
-      var name = user[0].name  
-      console.log(name)
+      var name = user[0].name        
       Event
         .find({status:'active'})
         .where('status').equals('active')
         .exec(function(err,event){
-          console.log('event found')
-          console.log(event[0])
 
         yelp.search({     
             category_filter: event[0].category, //this will correspond to cateogry (e.g. Restaurant)          
@@ -161,8 +160,6 @@ module.exports.mapView = function(req, res) {
 
         })
     })
-  //make yelp request
 
-  //send back response
 }
 

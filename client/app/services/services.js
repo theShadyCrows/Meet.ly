@@ -95,7 +95,6 @@ angular.module('MeetlyApp.services', [])
     
   };
 
-
   // ======================================================
   // TO DO: GET AND POST REQUEST FOR FRIENDS LIST
   // ======================================================

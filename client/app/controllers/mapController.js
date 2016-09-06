@@ -65,7 +65,7 @@ var makeRequest = function(){
   httpRequestsFactory.getMap()
     .then (function(preParseData){
       var preParseData = preParseData;
-      geoLocator();
+      // geoLocator();
       // var geoLocation = storeData.get('geoLocation');
       console.log('GEOLOCATION')
       console.log(storeData.get('geoLocation'))
