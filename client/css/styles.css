@@ -18,6 +18,10 @@ body {
 
 }
 
+#idContainer{
+  margin-top: 30px;
+}
+
 .btn {
 border: 1px solid #00802b !important;
 border-radius: 5px !important;
@@ -91,7 +95,7 @@ header .nav li a:hover {
 
 /* ARTICLE BODY ======================================= */
 .body-wrapper {
-  padding-top: 40px;
+  /*padding-top: 40px;*/
 }
 
 article {
@@ -302,7 +306,6 @@ article {
 #inviteHeader {
   text-align: center;
 }
->>>>>>> 0904
 
 .detail{
   display: inline;
