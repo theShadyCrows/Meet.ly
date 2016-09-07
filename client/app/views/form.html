@@ -1,14 +1,31 @@
+<header class="clearfix" ng-controller="Nav">
+  <div class="logo">
+    <h1><a href="/#/">Meet.ly</a></h1>
+  </div>
+  <div class="nav">
+    <nav>
+      <ul>
+        <li ng-hide="isLoggedIn"><a href="#/login">Sign In</a></li>
+        <li ng-show="isLoggedIn"><a href="#/map-view">Welcome {{currentUser.name}}</a></li>
+        <li ng-show="isLoggedIn"><a href="#/invites">Your Invites</a></li>
+        <li ng-show="isLoggedIn"><a href="#/">Initiate Invite</a></li>
+        <li ng-show="isLoggedIn"><a href="#/signout">Sign Out</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 <article class="clearfix form" ng-controller="formController">
   <div class="form-left">
     <label for="event">EVENT</label>
-    <input type="text" value="" ng-model="inviteName" placeholder="Invite Name">
+    <input type="text" value="" ng-model="inviteName" placeholder="Event Name (e.g. Night Out!)">
 
     <label for="place">PLACE</label>
     <div class="form-group">
       <select class="form-control" ng-options="category.name disable when category.name == disableName for category in categoryData track by category.name" ng-model="selectedCategory"></select>
     </div>
-    <input type="text" value="{{categoryType}}" ng-model="categoryType" placeholder="Key Words">
-    <input type="text" value="" ng-model="location" placeholder="Location">
+    <input type="text" value="{{categoryType}}" ng-model="categoryType" placeholder="Key Words (e.g. Pizza, Tacos)">
+    <input type="text" value="" ng-model="location" placeholder="Location (e.g. 1216 Broadway, NYC)">
 
     <label for="date-time">DATE &amp; TIME</label>
     <!-- <input type="text" value="" ng-model="eventDate" placeholder="Date">
