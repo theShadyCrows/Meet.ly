@@ -19,9 +19,10 @@ body {
 }
 
 .btn {
-border: 1px solid #00802b !important;
-border-radius: 5px !important;
+  border: 1px solid #00802b !important;
+  border-radius: 5px !important;
 }
+
 .clearfix:after {
  content: " ";
  display: block;
@@ -281,30 +282,65 @@ article {
     border: 2px solid rgb(0,172,237);
 }
 
-
-
 /* GOOGLE MAPS API  ============================================== */
 .map-container {
   margin: 0 auto;
   width: 1000px;
+}
 
+.map-container .loc-details-box,
+.map-container .map-box,
+.map-container .iframe-box {
+  float: left;
+  width: 32%;
+  vertical-align: top;
+  border: 1px solid #00802b;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.loc-details-box {
+  height: 250px;
+  margin-right: 15px;
+  background: #1a1a1a;
+  color: white;
+}
+
+.loc-details-box ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.loc-details-box button {
+  color: #000;
+  margin-top: 30px;
+}
+
+.map-box {
+  height: 510px;
+  margin-right: 15px;
+}
+
+.iframe-box {
+  height: 510px;
 }
 
 #map {
-  height: 400px;
-  width: 900px;
+  /*height: 400px;
+  width: 900px;*/
+  height: 500px;
   border: 1px solid #333;
-  border-radius: 6px;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 /* Invites Page  ============================================== */
-
 #inviteHeader {
   text-align: center;
 }
->>>>>>> 0904
 
-.detail{
+.detail {
   display: inline;
   font-weight: bold;
   font-size: 30px;
