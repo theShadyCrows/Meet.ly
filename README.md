@@ -1,5 +1,5 @@
 # Meet.ly
-A Midpoint meeting application.
+Your avenue to a centralized meetup location. Fillout your preferences, and send out meetup requests to your friends!
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -12,10 +12,13 @@ nodemon server/server.js
 
 See deployment for notes on how to deploy the project on a live system.
 
+## Live Example
+You can view our running example here: https://meetly-app.herokuapp.com/
+
 ## Tech Stack
 - Front End: AngluarJS
-- Back End: NodeJS
-- Database: mySQL/Bookshelf/knex
+- Server: NodeJS, Express.js
+- Database: MongoDB, Mongoose.js, Bookshelf.js/knex.js
 
 ## Front End Details
 Current File Structure:
@@ -61,4 +64,11 @@ tba
 - [Google Maps API](https://developers.google.com/maps/documentation/javascript/)
 - [Passport]()
 
-## Authors
+## Developers
+- [Samantha Gowda](https://github.com/samgowda)
+- [Harpreet Mann](https://github.com/H3mann)
+- [Keith Wallace](https://github.com/Keith-Wallace)
+- [Matthew Yun](https://github.com/mattyun)
+
+
+
