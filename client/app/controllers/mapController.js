@@ -74,11 +74,11 @@ var makeRequest = function(){
       $scope.map = {};
       $scope.map.marker;
       $scope.map.markersArray = [];
-      // $scope.map.markerImgArr = 
-      // ['https://s3.amazonaws.com/fullstackacademy/img/marker_100.png',
-      // "https://s3.amazonaws.com/fullstackacademy/img/marker_75.png", 
-      // "https://s3.amazonaws.com/fullstackacademy/img/marker_50.png",
-      // "https://s3.amazonaws.com/fullstackacademy/img/marker_0.png"];  
+      $scope.map.markerImgArr = 
+      ['https://s3.amazonaws.com/fullstackacademy/img/marker_100.png',
+      "https://s3.amazonaws.com/fullstackacademy/img/marker_75.png", 
+      "https://s3.amazonaws.com/fullstackacademy/img/marker_50.png",
+      "https://s3.amazonaws.com/fullstackacademy/img/marker_0.png"];  
       $scope.map.destinationLatLng;
       $scope.map.markerImg;
 
@@ -165,7 +165,7 @@ var makeRequest = function(){
 
   };
 
-geoLocator();
+  geoLocator();
 
   // END: INIT MAP
 

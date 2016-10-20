@@ -26,6 +26,7 @@ angular.module('MeetlyApp', [
   'MeetlyApp.services',
   'MeetlyApp.invites',
   'MeetlyApp.services',
+  'MeetlyApp.yourInvites',
   'ui.router'])
 
 // SET STATE AND ROUTER PROVIDERS FOR SPA
@@ -69,6 +70,11 @@ angular.module('MeetlyApp', [
       url: '/invites',
       templateUrl: 'app/views/invites.view.html',
       controller: 'Invites'      
+    })
+    .state('yourInvites',{
+      url: '/yourInvites',
+      templateUrl:'app/views/yourInvites.view.html',
+      controller: 'formController'
     })
 })
 

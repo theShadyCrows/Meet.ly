@@ -70,10 +70,16 @@ angular.module('MeetlyApp.form', [])
   // HANDLE FORM SUBMISSION AND VALIDATE DATA =====================================================
   $scope.submitForm = function(formSubmissionObj) {
     $scope.postRequest = validateFormFactory.toValidate(formSubmissionObj);
+    console.log('submitForm',$scope.postRequest);
+    $scope.formData = $scope.postRequest;
+    console.log('YO',$scope.postRequest.obj.f_name)
+   
+
     
     if ($scope.postRequest) {
       // DATA IS VALID AND CAN CALL YELP API POST REQUEST
       initMeetSearch();
+      $scope.data.searchResultsArr =  [];
     } else {
       // HANDLE VALIDATION ERROR
     };
@@ -85,6 +91,8 @@ angular.module('MeetlyApp.form', [])
     httpRequestsFactory.postRequest($scope.postRequest.obj)
       .then(function (searchResults) {
         $scope.data.results = searchResults;
+        console.log('HELLO',$scope.data.results)
+      
 
         // STORE DATA
         // storeData.set('apiResults', $scope.data.results);

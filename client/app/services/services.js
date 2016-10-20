@@ -37,7 +37,7 @@ angular.module('MeetlyApp.services', [])
 .factory('httpRequestsFactory', function($location, $http, Auth) {
 
   var postRequest = function(params) {
-    console.log('params ====> ', params)
+    console.log('POSTREQparams ====> ', params)
     return $http({
       method: 'POST',
       url: '/api/yelpAPI',
@@ -48,6 +48,7 @@ angular.module('MeetlyApp.services', [])
     })
     .then(function (response) {
       return response.data;
+      console.log('RESPONSE',response.data)
     })
     .catch(function (error) {
       console.log('WE HAVE AN ERROR')

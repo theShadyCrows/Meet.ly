@@ -14,8 +14,9 @@
     </nav>
   </div>
 </header>
-
+<div class="form" ng-controller='yourInvites'>
 <article class="clearfix form" ng-controller="formController">
+
   <div class="form-left">
     <label for="event">EVENT</label>
     <input type="text" value="" ng-model="inviteName" placeholder="Event Name (e.g. Night Out!)">
@@ -52,3 +53,4 @@
     <button ng-click="submitForm({f_name: inviteName, place: {f_category: selectedCategory.name, f_type: categoryType, f_location: location}, dateTime: eventDateTime, f_friends: selectedFriendsList })">INVITE!</button>
   </div>
 </article>
+</div>
