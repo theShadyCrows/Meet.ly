@@ -7,7 +7,8 @@ angular.module('MeetlyApp.invites', [])
 //probably very similar. difference is gonna be on 
 //server side
   Data.getInvites()
-    .success(function(data){     
+    .success(function(data){
+      console.log('DATA!!',data)
       $scope.invite = data[0]; //just use first invite for now
     })
     .error(function(error){
