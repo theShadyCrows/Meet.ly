@@ -1,41 +1,21 @@
-  <header class="clearfix" ng-controller="Nav">
-    <div class="logo">
-      <h1><a href="/#/">Meet.ly</a></h1>
-    </div>
-    <div class="nav">
-      <nav>
-        <ul>
-          <li ng-hide="isLoggedIn"><a href="#/login">Sign In</a></li>
-          <li ng-show="isLoggedIn"><a href="#/map-view">Welcome {{currentUser.name}}</a></li>
-          <li ng-show="isLoggedIn"><a href="#/invites">Your Invites</a></li>
-          <li ng-show="isLoggedIn"><a href="#/">Initiate Invite</a></li>
-          <li ng-show="isLoggedIn"><a href="#/signout">Sign Out</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-<navigation></navigation>
+<header class="clearfix" ng-controller="Nav">
+  <div class="logo">
+    <h1><a href="/#/">Meet.ly</a></h1>
+  </div>
+  <div class="nav">
+    <nav>
+      <ul>
+        <li ng-hide="isLoggedIn"><a href="#/login">Sign In</a></li>
+        <li ng-show="isLoggedIn"><a href="#/map-view">Welcome {{currentUser.name}}</a></li>
+        <li ng-show="isLoggedIn"><a href="#/invites">Your Invites</a></li>
+        <li ng-show="isLoggedIn"><a href="#/">Initiate Invite</a></li>
+        <li ng-show="isLoggedIn"><a href="#/signout">Sign Out</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 <div class="container">
-
-
-  <header class="clearfix" ng-controller="Nav">
-    <div class="logo">
-      <h1><a href="/#/">Meet.ly</a></h1>
-    </div>
-    <div class="nav">
-      <nav>
-        <ul>
-          <li ng-hide="isLoggedIn"><a href="#/login">Sign In</a></li>
-          <li ng-show="isLoggedIn"><a href="#/map-view">Welcome {{currentUser.name}}</a></li>
-          <li ng-show="isLoggedIn"><a href="#/invites">Your Invites</a></li>
-          <li ng-show="isLoggedIn"><a href="#/">Initiate Invite</a></li>
-          <li ng-show="isLoggedIn"><a href="#/signout">Sign Out</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
   <div class="row">
     <div class="col-md-6">
