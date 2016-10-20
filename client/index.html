@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html ng-app="MeetlyApp">
 <head>
-  <title>Meet.ly</title>
+  <title>Meet.ly | Find Something to do with Friends!</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href='//fonts.googleapis.com/css?family=Raleway|Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/styles.css">
-   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
 
@@ -31,19 +30,18 @@
 
   <div ui-view class="body-wrapper"></div>
 
-  <!-- SCRIPTS -->
+  <!-- VENDOR SCRIPTS -->
   <script src="vendors/jquery/min/jquery-3.1.0.min.js"></script>
   <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
   <script async defer src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="vendors/bootstrap-datetime/moment.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="vendors/bootstrap-datetime/bootstrap-datetimepicker.js"></script>
+  <script src="//code.angularjs.org/1.5.8/angular.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+  <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo"></script>
 
-  <script src="https://code.angularjs.org/1.5.8/angular.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
-
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNIFVWOXNcqHxl_2bI8WHa9BbYReKdpCo"></script>
-
+  <!-- LOCAL SCRIPTS -->
   <script src="js/main.js"></script>
   <script src="app/services/services.js"></script>
   <script src="app/controllers/yelpController.js"></script>
@@ -58,7 +56,6 @@
   <script src="app/controllers/nav.controller.js"></script>
   <script src="app/controllers/invites.controller.js"></script>
   <script src="app/app.js"></script>
-  
 </body>
 </html>
 
